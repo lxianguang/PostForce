@@ -4,7 +4,7 @@ clear;
 %% Parameters
 halfheight = 5E-5;
 %% Read File
-path = 'G:\Data\ShearPlate\Force\Re100A0.50Rho1.00S0.00K3.50_1';
+path = 'G:\DataFile\ShearPlate\Force\ShearRateEffectK3.5\S2.00';
 subdir=dir([path '\DatBody']);
 if size(subdir,1)<2
    error('There is no files in the folder')
@@ -21,7 +21,6 @@ for num=1:length(subdir)
     data0 = importdata(readfile).data;
     data = [data0(:,1) data0(:,2) data0(:,5) data0(:,6)]; % x, y, ax, ay
     curvetype = 1; %1 line segments, 0 closed curve
-    [data,centerx,centery] = positioncorrect(data, curvetype);
     [vertices, dataindex] = linetopolygon(data, curvetype, halfheight); % in counter clockwise
     p = polygon(vertices);
     f = extermap(p);
@@ -55,12 +54,13 @@ for num=1:length(subdir)
         addmassforce(k,num) = real(mtmp);
     end
     fprintf('第%d次计算结束!\n',num);
+    fprintf(' Fx:%.6f    Fy:%.6f\n',addmassforce(1,num),addmassforce(2,num));
 end
 %% Write Add Mass Force 
 writeforce = [path '\Result\Combination\AddMassForce.dat'];
 file=fopen(writeforce,'w');
 fprintf(file,'VARIABLES=\"Time\",\"ForceX\",\"ForceY\"\n');
-for k=1:length(subdir)
+for k=1:num
     fprintf(file,'%.6f    %.6f    %.6f\n',time(k),addmassforce(1,k),addmassforce(2,k));
 end
 fclose all;
