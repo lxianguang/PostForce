@@ -1,20 +1,19 @@
 #!MC 1410
 #!Plot Vortex Flow
-$!Varset |NumLoop| = 65
+$!Varset |NumLoop| = 241
 $!Varset |BackgroundVortex| = 0.00
-$!Varset |PATH| = 'G:\Data\ShearPlate\Force\Re100A0.50Rho1.00S0.00K3.50_1'
+$!Varset |PATH| = 'G:\DataFile\IntervalPlate\Vortex\Re100A0.25K3.50S0.00Wt\Wt0.50'
 $!Loop |NumLoop| 
 
 $!IF |Loop|<10
-$!VarSet |MFBD| = '|PATH|\DatFlow\Flow00|Loop|.plt'
 $!VarSet |out| = '00|Loop|'
 $!ELSEIF |Loop|<100
-$!VarSet |MFBD| = '|PATH|\DatFlow\Flow0|Loop|.plt'
 $!VarSet |out| = '0|Loop|'
 $!ELSE
-$!VarSet |MFBD| = '|PATH|\DatFlow\Flow|Loop|.plt'
 $!VarSet |out| = '|Loop|'
 $!ENDIF
+
+$!VarSet |MFBD| = '|PATH|\DatFlow\Flow|out|.plt'
 
 $!ReadDataSet  '"|MFBD|" '
   ReadDataOption = New
@@ -51,8 +50,8 @@ $!SetContourVar
   LevelInitMode = ResetToNice
 $!GlobalContour 1  ColorMapName = 'Diverging - Blue/Red'
 $!GlobalContour 1  ColorMapFilter{ColorMapDistribution = Continuous}
-$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMin = -5}}
-$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMax = 5}}
+$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMin = -2}}
+$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMax = 2}}
 $!GlobalRGB RedChannelVar = 3
 $!GlobalRGB GreenChannelVar = 3
 $!GlobalRGB BlueChannelVar = 3
