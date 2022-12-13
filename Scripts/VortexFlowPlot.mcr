@@ -1,8 +1,9 @@
 #!MC 1410
 #!Plot Vortex Flow
-$!Varset |NumLoop| = 241
+$!Varset |NumLoop| = 001
 $!Varset |BackgroundVortex| = 0.00
-$!Varset |PATH| = 'G:\DataFile\IntervalPlate\Vortex\Re100A0.25K3.50S0.00Wt\Wt0.50'
+$!Varset |VortexRange| = 3.00
+$!Varset |PATH| = 'xxxxxxxxxxxxxxxxxxxxxxx'
 $!Loop |NumLoop| 
 
 $!IF |Loop|<10
@@ -50,8 +51,8 @@ $!SetContourVar
   LevelInitMode = ResetToNice
 $!GlobalContour 1  ColorMapName = 'Diverging - Blue/Red'
 $!GlobalContour 1  ColorMapFilter{ColorMapDistribution = Continuous}
-$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMin = -2}}
-$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMax = 2}}
+$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMin = -|VortexRange|}}
+$!GlobalContour 1  ColorMapFilter{ContinuousColor{CMax = |VortexRange|}}
 $!GlobalRGB RedChannelVar = 3
 $!GlobalRGB GreenChannelVar = 3
 $!GlobalRGB BlueChannelVar = 3
@@ -87,7 +88,7 @@ $!SetContourVar
 $!FieldLayers ShowContour = Yes
 $!View Fit
   ConsiderBlanking = Yes
-$!ExportSetup ExportFName = '|PATH|\Picture\Vortex|out|.png'
+$!ExportSetup ExportFName = '|PATH|\Result\PictureView\Vortex|out|.png'
 $!Export 
   ExportRegion = AllFrames
 

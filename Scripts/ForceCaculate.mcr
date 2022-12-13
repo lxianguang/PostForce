@@ -1,8 +1,8 @@
 #!MC 1410
 
-$!Varset |NumLoop| = 65
-$!Varset |PATH1| = 'G:\Data\ShearPlate\Force\Re100A0.50Rho1.00S0.00K3.50_1'
-$!Varset |PATH2| = 'G:\\Data\\ShearPlate\\Force\\Re100A0.50Rho1.00S0.00K3.50_1'
+$!Varset |NumLoop| = 33
+$!Varset |PATH1| = 'G:\DataFile\IntervalPlate\ForceCalculate\Re100A0.25K1.00S0.00Wt\Test'
+$!Varset |PATH2| = 'G:\\DataFile\\IntervalPlate\\ForceCalculate\\Re100A0.25K1.00S0.00Wt\\Test'
 
 $!Loop |NumLoop|  
 
