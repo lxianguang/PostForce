@@ -2,12 +2,14 @@ clc
 clear
 close all
 run A_DefineFilePath.m
+format long
 %% Define Parameters
 % domian size
 halfheight = 0.02;
 sidelen    = [5.00, 15.0, 5.00, 5.00]; % Range based on head point(left,right,down,upper length)
-% mesh size
+% grid space
 boundarydx = [0.10, 1.00, 1.00, 1.00]; % down, right, upper, left boundary(outer)
+% mesh size
 louter     = [0.05, 1.00, 1.00, 1.00]; % down, right, upper, left boundary(outer)
 linner     = [0.05, 0.05, 0.05, 0.05]; % down, right, upper, left boundary(inner)
 for kk=1:size(FileList,1)
@@ -28,6 +30,8 @@ for kk=1:size(FileList,1)
         sidepoints  = [sum(sidelen(1:2)),sum(sidelen(3:4)),sum(sidelen(1:2)),sum(sidelen(3:4))]./boundarydx;
         npoints     = sum(sidepoints);
         outerpoints = zeros(npoints,2);
+        coor(:,1) = coor(:,1) - coor(1,1);
+        % coor(:,2) = coor(:,2) - coor(1,2);
         xmin = coor(1,1) - sidelen(1);
         xmax = coor(1,1) + sidelen(2);
         % ymin = coor(1,2) - sidelen(3);
@@ -47,11 +51,11 @@ for kk=1:size(FileList,1)
         [nx,ny,innerpoints] = linetopolygon(coor,halfheight);
         %% Write Gmesh *.geo File
         if num<10
-            outfile = ['mesh00' num2str(num) '.geo'];
+            outfile = ['Mesh00' num2str(num) '.geo'];
         elseif num<100
-            outfile = ['mesh0'  num2str(num) '.geo'];
+            outfile = ['Mesh0'  num2str(num) '.geo'];
         else
-            outfile = ['mesh'   num2str(num) '.geo'];
+            outfile = ['Mesh'   num2str(num) '.geo'];
         end
         writedata = [FilePath '\DatGeo\' outfile];
         file = fopen(writedata,'w');
@@ -165,7 +169,8 @@ for kk=1:size(FileList,1)
         end
         fprintf(file,'%d};\n\n',2*nx+ny+npoints);
         % plane surface =====================================================================================
-        fprintf(file,'Plane Surface(1) = {1,2};\n');
+        fprintf(file,'Plane Surface(9) = {1,2};\n');
+        fprintf(file,'Physical Surface(9) = {9};\n');
         % fprintf(file,'\nRecombine Surface {644};\nMesh.RecombinationAlgorithm = 1;\n');
     end
     fclose all;
