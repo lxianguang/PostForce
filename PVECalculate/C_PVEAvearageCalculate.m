@@ -3,8 +3,8 @@ clear
 %% Calculate The Work Consumed By The Plate Per Unit Distance
 %% Parameters
 run A_DefineFilePath.m
-startPeriod = 9;
-endPeriod   = 11;
+startPeriod = 8.9;
+endPeriod   = 9.9;
 Period0     = pi/2;
 %% Read Data
 subdir=dir([PastePath '\Power']);
