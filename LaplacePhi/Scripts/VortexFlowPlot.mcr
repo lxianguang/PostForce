@@ -88,7 +88,7 @@ $!SetContourVar
 $!FieldLayers ShowContour = Yes
 $!View Fit
   ConsiderBlanking = Yes
-$!ExportSetup ExportFName = '|PATH|\Result\PictureView\Vortex|out|.png'
+$!ExportSetup ExportFName = '|PATH|\Result\6PictureView\Vortex|out|.png'
 $!Export 
   ExportRegion = AllFrames
 

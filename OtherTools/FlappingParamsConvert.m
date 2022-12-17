@@ -3,11 +3,11 @@ clc
 clear
 format long
 PeriodLen = 1.0;
-Periodnum = 11;
+Periodnum = 10;
 Shear     = 0.20;       % dimensionless shear rate
-Amp       = 0.25;        % amplitude (half peak-to-peak value)
-dt        = 1/10000;    % dimensionless time step by period
-doutFlow  = 1/8/4;       % flow field output time interval per period
+Amp       = 0.25;       % amplitude (half peak-to-peak value)
+dt        = 1/5000;    % dimensionless time step by period
+doutFlow  = 1/8*4;        % flow field output time interval per period
 doutInfo  = doutFlow/128;    % flow infomation output time interval per period
 %% values with dimension
 dtreal    = 1/100.;      % mesh size
@@ -20,7 +20,8 @@ f         = Uref / (2 * pi * Amp);
 period    = Uref / f;
 ShearReal = Shear*Uref / (2 * Amp);
 outflow   = doutFlow * period; % outflow / Tref
-outInfo   = doutInfo * period; % outflow / Tref
+outInfo0  = doutInfo * period; % outflow / Tref
+outInfo   = (floor(outInfo0/dt)+1)*dt;
 %% print parameters
 fprintf('Total Calculate Time:  %.12f\n',Periodnum * PeriodLen * period)
 fprintf('Real Shear Rate:       %.13f\n',ShearReal)

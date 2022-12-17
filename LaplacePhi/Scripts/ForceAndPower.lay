@@ -1,5 +1,5 @@
 #!MC 1410
-$!VarSet |LFDSFN1| = '"Combination\ForceX.dat"'
+$!VarSet |LFDSFN1| = '"5Combination\ForceX.dat"'
 $!VarSet |LFDSVL1| = '"T" "AccelerationFx" "FrictionFx" "VicpreFx" "VortexFx" "ResultantFx" "TrueResFx"'
 $!SetStyleBase Factory
 $!GlobalPaper 
@@ -86,8 +86,8 @@ $!GlobalLinePlot
       }
     XYPos
       {
-      X = 88.086
-      Y = 79.222
+      X = 88.185
+      Y = 81.222
       }
     }
 $!LineMap  [1]
@@ -266,7 +266,7 @@ $!LineMap  [6]
     {
     Zone = 1
     XAxisVar = 1
-    YAxisVar = 6
+    YAxisVar = 7
     }
   Lines
     {
@@ -312,9 +312,10 @@ $!XYLineAxis
 $!XYLineAxis 
   XDetail 1
     {
-    RangeMin = 23.561899185180664062
-    RangeMax = 25.132857046508789267
-    GRSpacing = 0.5
+    RangeMin = 31.415929794311523438
+    RangeMax = 32.986878117942808331
+    AutoGrid = No
+    GRSpacing = 0.2
     TickLabel
       {
       TextShape
@@ -333,9 +334,9 @@ $!XYLineAxis
 $!XYLineAxis 
   YDetail 1
     {
-    RangeMin = -1.5337419509887695312
-    RangeMax = 1.2075111031293868091
-    GRSpacing = 0.5
+    RangeMin = -5
+    RangeMax = 5
+    GRSpacing = 2
     TickLabel
       {
       TextShape

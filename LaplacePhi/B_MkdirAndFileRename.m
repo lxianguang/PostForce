@@ -9,16 +9,17 @@ for k=1:size(FileList,1)
     CreatDir([FilePath '\DatPhi']);
     CreatDir([FilePath '\Result']);
     CreatDir([FilePath '\DatGeo']);
-    CreatDir([FilePath '\Result\PictureView']);
-    CreatDir([FilePath '\Result\Combination']);
-    CreatDir([FilePath '\Result\VortexForce']);
-    CreatDir([FilePath '\Result\VicPreForce']);
-    CreatDir([FilePath '\Result\VicousForce']);
-    CopyFile('.\Scripts\ForceCaculate.mcr' ,FilePath);
-    CopyFile('.\Scripts\VortexFlowPlot.mcr',FilePath);
-    CopyFile('.\Scripts\PhiACalculate.sh' ,[FilePath '\DatGeo']);
-    CopyFile('.\Scripts\NearWallPlate.xml',[FilePath '\DatGeo']);
-    CopyFile('.\Scripts\ForceAndPower.lay',[FilePath '\Result']);
+    CreatDir([FilePath '\Result\1VortexForce'  ]);
+    CreatDir([FilePath '\Result\2VicPreForce'  ]);
+    CreatDir([FilePath '\Result\3AddedForce'   ]);
+    CreatDir([FilePath '\Result\4FrictionForce']);
+    CreatDir([FilePath '\Result\5Combination'  ]);
+    CreatDir([FilePath '\Result\6PictureView'  ]);
+    CopyFile('.\Scripts\ForceCalculate.mcr' , FilePath);
+    CopyFile('.\Scripts\VortexFlowPlot.mcr' , FilePath);
+    CopyFile('.\Scripts\PhiACalculate.sh'   ,[FilePath '\DatGeo']);
+    CopyFile('.\Scripts\NearWallPlate.xml'  ,[FilePath '\DatGeo']);
+    CopyFile('.\Scripts\ForceAndPower.lay'  ,[FilePath '\Result']);
     %% Rename Files
     if exist([FilePath '\DatFlow'],'dir')
         subdir=dir([FilePath '\DatFlow']);
