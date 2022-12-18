@@ -3,17 +3,18 @@ clear
 %% Calculate The Average Force Of Swimming Plate In Shear Flow
 %% Reading Path
 run A_DefineFilePath.m
-Abscissa = 'WL';
+Abscissa = FileList(1,:);
+Abscissa(end-3:end) = [];
 %% Define Variables
 AverageData = zeros(7,size(FileList,1),4);
 for i=1:size(FileList,1)
     fprintf('%s\n',FileList(i,:));
     FilePath = [MkdirPath '\' FileList(i,:)];
     % Combinate Path
-    forcexF = [FilePath '\Result\Combination\ForceX.dat']; 
-    forceyF = [FilePath '\Result\Combination\ForceY.dat']; 
-    powerxF = [FilePath '\Result\Combination\PowerX.dat']; 
-    PoweryF = [FilePath '\Result\Combination\PowerY.dat']; 
+    forcexF = [FilePath '\Result\5Combination\ForceX.dat']; 
+    forceyF = [FilePath '\Result\5Combination\ForceY.dat']; 
+    powerxF = [FilePath '\Result\5Combination\PowerX.dat']; 
+    PoweryF = [FilePath '\Result\5Combination\PowerY.dat']; 
     % Reading Files
     forcex = importdata(forcexF).data;
     forcey = importdata(forceyF).data;

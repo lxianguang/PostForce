@@ -10,9 +10,6 @@ Period0     = pi/2;
 subdir=dir([PastePath '\Power']);
 Period = Period0 * ones(1,size(subdir,1)) * 1.0;
 % Period = Period0 * [1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0];
-if size(subdir,1)<2 || size(subdir,1)<2
-   error('There is no files in the folder')
-end
 subdir(1:2)         = [];
 Abscissa            = subdir(1).name;
 Abscissa(end-7:end) = [];
