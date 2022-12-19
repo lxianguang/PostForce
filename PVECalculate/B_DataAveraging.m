@@ -79,9 +79,6 @@ ndata = data;
 end
 
 function [error] = maxerror(data0,data1)
-    [m,p]  = max(data0);
-    error1 = abs((m - data1(p))/m);
-    [n,q]  = min(data0);
-    error2 = abs((n - data1(q))/n);
-    error  = max(error1,error2);
+    aver   = sum(data0)/length(data0);
+    error  = max(abs((data0-data1)/aver));
 end

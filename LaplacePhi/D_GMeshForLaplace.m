@@ -6,27 +6,21 @@ format long
 %% Define Parameters
 % domian size
 halfheight = 0.02;
-sidelen    = [2.00, 8.00, 3.00, 3.00]; % Range based on head point(left,right,down,upper length)
+sidelen    = [2.00, 8.00, 2.50, 2.50]; % Range based on head point(left,right,down,upper length)
 % grid space
-% boundarydx = [0.10, 1.00, 1.00, 1.00]; % down, right, upper, left boundary(outer)
-boundarydx = [0.20, 0.20, 0.20, 0.20];
+boundarydx = [0.05, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
 % mesh size
-% louter     = [0.05, 1.00, 1.00, 1.00]; % down, right, upper, left boundary(outer)
-% linner     = [0.05, 0.05, 0.05, 0.05]; % down, right, upper, left boundary(inner)
-louter     = [0.50, 0.50, 0.50, 0.50];
-linner     = [0.10, 0.10, 0.10, 0.10];
+louter     = [0.10, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
+linner     = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(inner)
 for kk=1:size(FileList,1)
     fprintf('%s\n',FileList(kk,:));
     FilePath = [MkdirPath '\' FileList(kk,:)];
-    subdir=dir([FilePath '\DatBody']);
-    if size(subdir,1)<2
-       error('There is no files in the folder')
-    end
+    subdir=dir([FilePath '\DatBodyN']);
     subdir(1:2) = [];
     for num=1:size(subdir,1)
         %% Load Plate Data
         filename = subdir(num).name;
-        readfile = [FilePath '\DatBody\' filename];
+        readfile = [FilePath '\DatBodyN\' filename];
         data     = importdata(readfile).data;
         coor     = [data(:,1) data(:,2) data(:,5) data(:,6)]; % x, y, ax, ay
         % define domain
@@ -37,10 +31,10 @@ for kk=1:size(FileList,1)
         % coor(:,2) = coor(:,2) - coor(1,2);
         xmin = coor(1,1) - sidelen(1);
         xmax = coor(1,1) + sidelen(2);
-        ymin = coor(1,2) - sidelen(3);
-        ymax = coor(1,2) + sidelen(4);
-%         ymin = -sidelen(3);
-%         ymax =  sidelen(4);
+%         ymin = coor(1,2) - sidelen(3);
+%         ymax = coor(1,2) + sidelen(4);
+        ymin = 0;
+        ymax = 5;
         % get outer boundary points' coordinates
         outerpoints( 1                      :sidepoints(1)        ,1) = (xmin: boundarydx(1):(xmax-boundarydx(1)));
         outerpoints((sidepoints(1)+1)       :sum(sidepoints(1:2)) ,1) =  xmax;

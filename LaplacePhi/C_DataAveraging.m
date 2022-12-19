@@ -5,6 +5,24 @@ close all
 run A_DefineFilePath.m
 for n=1:size(FileList,1)
     fprintf('%s\n',FileList(n,:));
+    subdir=dir([MkdirPath '\' FileList(n,:) '\DatBody']);
+    if size(subdir,1)<2
+       error('There is no files in the folder')
+    end
+    subdir(1:2)   = [];
+    % Aaveraging For Acceleration
+    for num=1:size(subdir,1)
+        BodyPath0 = [MkdirPath '\' FileList(n,:) '\DatBody\'  subdir(num).name];
+        BodyPath1 = [MkdirPath '\' FileList(n,:) '\DatBodyN\' subdir(num).name];
+        BodyData  = importdata(BodyPath0).data;
+        NewBody   = dataAveraging(BodyData,5);
+        file=fopen(BodyPath1,'w');
+        fprintf(file,'variables = x,y,u,v,ax,ay,fxi,fyi,fxr,fyr \n');
+        for i=1:size(BodyData,1)
+            fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',NewBody(i,1),NewBody(i,2),NewBody(i,3),NewBody(i,4),NewBody(i,5),NewBody(i,6),NewBody(i,7),NewBody(i,8),NewBody(i,9),NewBody(i,10));
+        end
+    end
+    fclose all;
     % Averaging For Velocity
     VelocityPath0 = [MkdirPath '\' FileList(n,:) '\DatInfo\SampBodyMean_0001.plt' ];
     VelocityPath1 = [MkdirPath '\' FileList(n,:) '\DatInfo\0SampBodyMean_0001.plt'];
@@ -20,8 +38,8 @@ for n=1:size(FileList,1)
     VelocityError = maxerror(Velocitydata(:,4),NewVelocity(:,4));
     fprintf('U max error:%.6f percent\n',VelocityError*100);
     % Averaging For Force
-    ForcePath0    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\ForceDirect_0001.plt'  ];
-    ForcePath1    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\0ForceDirect_0001.plt' ];
+    ForcePath0    = [MkdirPath '\' FileList(n,:) '\DatInfo\ForceDirect_0001.plt'  ];
+    ForcePath1    = [MkdirPath '\' FileList(n,:) '\DatInfo\0ForceDirect_0001.plt' ];
     preparation(ForcePath1,ForcePath0)
     Forcedata     = importdata(ForcePath0).data;
     NewForce      = dataAveraging(Forcedata,10);
@@ -34,8 +52,8 @@ for n=1:size(FileList,1)
     ForceError = maxerror(Forcedata(:,2),NewForce(:,2));
     fprintf('F max error:%.6f percent\n',ForceError*100);
 %     % Averaging For Power
-%     PowerPath0    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\Power_0001.plt'  ];
-%     PowerPath1    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\0Power_0001.plt' ];
+%     PowerPath0    = [MkdirPath '\' FileList(n,:) '\DatInfo\Power_0001.plt'  ];
+%     PowerPath1    = [MkdirPath '\' FileList(n,:) '\DatInfo\0Power_0001.plt' ];
 %     preparation(PowerPath1,PowerPath0)
 %     Powerdata     = importdata(PowerPath0).data;
 %     NewPower      = dataAveraging(Powerdata,10);
@@ -48,8 +66,8 @@ for n=1:size(FileList,1)
 %     PowerError = maxerror(Powerdata(:,3),NewPower(:,3));
 %     fprintf('P max error:%.6f percent\n',PowerError*100);
 %     % Averaging For Energy
-%     EnergyPath0    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\Energy_0001.plt'  ];
-%     EnergyPath1    = [[MkdirPath '\' FileList(n,:)] '\DatInfo\0Energy_0001.plt' ];
+%     EnergyPath0    = [MkdirPath '\' FileList(n,:) '\DatInfo\Energy_0001.plt'  ];
+%     EnergyPath1    = [MkdirPath '\' FileList(n,:) '\DatInfo\0Energy_0001.plt' ];
 %     preparation(EnergyPath1,EnergyPath0)
 %     Energydata     = importdata(EnergyPath0).data;
 %     NewEnergy      = dataAveraging(Energydata,1);
@@ -62,8 +80,6 @@ for n=1:size(FileList,1)
 %     EnergyError = maxerror(Energydata(:,4),NewEnergy(:,4));
 %     fprintf('E max error:%.6f percent\n',EnergyError*100);
     fclose all;
-    
-    
 end
 
 function [] = preparation(filename0,filename1)

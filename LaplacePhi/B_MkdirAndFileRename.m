@@ -9,6 +9,7 @@ for k=1:size(FileList,1)
     CreatDir([FilePath '\DatPhi']);
     CreatDir([FilePath '\Result']);
     CreatDir([FilePath '\DatGeo']);
+    CreatDir([FilePath '\DatBodyN']);
     CreatDir([FilePath '\Result\1VortexForce'  ]);
     CreatDir([FilePath '\Result\2VicPreForce'  ]);
     CreatDir([FilePath '\Result\3AddedForce'   ]);
