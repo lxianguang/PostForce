@@ -3,8 +3,8 @@ clc
 clear
 format long
 PeriodLen = 1.0;
-Periodnum = 10;
-Shear     = 0.50;       % dimensionless shear rate
+Periodnum = 20;
+Shear     = 0.00;       % dimensionless shear rate
 Amp       = 0.25;       % amplitude (half peak-to-peak value)
 dt        = 1/10000;    % dimensionless time step by period
 doutFlow  = 1/8;        % flow field output time interval per period

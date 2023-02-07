@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <NEKTAR>
     <EXPANSIONS>
-        <E COMPOSITE="C[14]" NUMMODES="5, 5" BASISTYPE="Modified_A,Modified_B" POINTSTYPE="GaussLobattoLegendre,GaussRadauMAlpha1Beta0" NUMPOINTS="8,7" FIELDS="phi0,phi1,phi2" />
+        <E COMPOSITE="C[9]" NUMMODES="5, 5" BASISTYPE="Modified_A,Modified_B" POINTSTYPE="GaussLobattoLegendre,GaussRadauMAlpha1Beta0" NUMPOINTS="8,7" FIELDS="phi0,phi1,phi2" />
     </EXPANSIONS>
     <CONDITIONS>
         <SOLVERINFO>
-            <I PROPERTY="EQTYPE"                        VALUE="Laplace"     />
+	    <I PROPERTY="EQTYPE"                        VALUE="Laplace"     />
             <I PROPERTY="Projection"                    VALUE="Continuous"                 />
             <I PROPERTY="GlobalSysSoln"                 VALUE="XxtMultiLevelStaticCond"  />
         </SOLVERINFO>
@@ -17,26 +17,26 @@
         </VARIABLES>
 
         <BOUNDARYREGIONS>
-            <B ID="0"> C[1-4] </B>    <!-- Farfield -->
-            <B ID="1"> C[5-8] </B>    <!-- Body1 -->
-            <B ID="2"> C[9-12] </B>  <!-- Body2 -->
+            <B ID="0"> C[5-8] </B>    <!-- Wall -->
+            <B ID="1"> C[1,2,4] </B>  <!-- farfield -->
+            <B ID="2"> C[3] </B>      <!-- lower wall -->
         </BOUNDARYREGIONS>
 
         <BOUNDARYCONDITIONS>
             <REGION REF="0">
-                <D VAR="phi0" VALUE="0." />
-                <D VAR="phi1" VALUE="0." />
-                <D VAR="phi2" VALUE="0." />
-            </REGION>
-            <REGION REF="1">
                 <N VAR="phi0" USERDEFINEDTYPE="MOVE" VALUE="0" />
                 <N VAR="phi1" USERDEFINEDTYPE="MOVE" VALUE="0" />
                 <N VAR="phi2" USERDEFINEDTYPE="MOVE" VALUE="0" />
             </REGION>
-            <REGION REF="2">
+            <REGION REF="1">
                 <D VAR="phi0" VALUE="0." />
                 <D VAR="phi1" VALUE="0." />
                 <D VAR="phi2" VALUE="0." />
+            </REGION>
+            <REGION REF="2">
+                <N VAR="phi0" VALUE="0." />
+                <N VAR="phi1" VALUE="0." />
+                <N VAR="phi2" VALUE="0." />
             </REGION>
         </BOUNDARYCONDITIONS>
         
@@ -45,6 +45,7 @@
             <E VAR="phi1" VALUE="0" />
             <E VAR="phi2" VALUE="0" />
         </FUNCTION>
+        
         
         <FUNCTION NAME="ExactSolution">
             <E VAR="phi0" VALUE="0" />

@@ -1,4 +1,4 @@
-for ((i=1;i<=33;i++)); do
+for ((i=1;i<=1;i++)); do
     if [ "$i" -lt 10 ] 
     then
         j=0${i}

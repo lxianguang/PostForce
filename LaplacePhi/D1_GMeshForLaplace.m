@@ -1,28 +1,27 @@
-clc
-clear
-close all
-run A_DefineFilePath.m
+%% Mesh for one body
 format long
+run C_DataAveraging.m
 %% Define Parameters
 % domian size
 halfheight = 0.02;
-sidelen    = [2.00, 8.00, 2.50, 2.50]; % Range based on head point(left,right,down,upper length)
-% grid space
-boundarydx = [0.05, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
-% mesh size
-louter     = [0.10, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
+sidelen    = [6.00, 15.0, 5.00 5.00]; % Range based on head point(left,right,down,upper length)
+% outer grid space
+boundarydx = [0.20, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
+% inner mesh size
+louter     = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(outer)
 linner     = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(inner)
 for kk=1:size(FileList,1)
-    fprintf('%s\n',FileList(kk,:));
-    FilePath = [MkdirPath '\' FileList(kk,:)];
-    subdir=dir([FilePath '\DatBodyN']);
+    FilePath = [MkdirPath par FileList(kk,:)];
+    subdir=dir([FilePath par 'DatBodyS']);
     subdir(1:2) = [];
     for num=1:size(subdir,1)
-        %% Load Plate Data
+       %% Load Plate Data
         filename = subdir(num).name;
-        readfile = [FilePath '\DatBodyN\' filename];
+        readfile = [FilePath par 'DatBodyS' par filename];
         data     = importdata(readfile).data;
         coor     = [data(:,1) data(:,2) data(:,5) data(:,6)]; % x, y, ax, ay
+        % get the figure outline of flapping plate
+        [index,nx,ny,innerpoints] = linetopolygon(coor,halfheight,0); % 0 closed body, 1 line
         % define domain
         sidepoints  = [sum(sidelen(1:2)),sum(sidelen(3:4)),sum(sidelen(1:2)),sum(sidelen(3:4))]./boundarydx;
         npoints     = sum(sidepoints);
@@ -31,10 +30,8 @@ for kk=1:size(FileList,1)
         % coor(:,2) = coor(:,2) - coor(1,2);
         xmin = coor(1,1) - sidelen(1);
         xmax = coor(1,1) + sidelen(2);
-%         ymin = coor(1,2) - sidelen(3);
-%         ymax = coor(1,2) + sidelen(4);
-        ymin = 0;
-        ymax = 5;
+        ymin = coor(1,2) - sidelen(3);
+        ymax = coor(1,2) + sidelen(4);
         % get outer boundary points' coordinates
         outerpoints( 1                      :sidepoints(1)        ,1) = (xmin: boundarydx(1):(xmax-boundarydx(1)));
         outerpoints((sidepoints(1)+1)       :sum(sidepoints(1:2)) ,1) =  xmax;
@@ -44,8 +41,6 @@ for kk=1:size(FileList,1)
         outerpoints((sidepoints(1)+1)       :sum(sidepoints(1:2)) ,2) = (ymin: boundarydx(2):(ymax-boundarydx(2)));
         outerpoints((sum(sidepoints(1:2))+1):sum(sidepoints(1:3)) ,2) =  ymax;
         outerpoints((sum(sidepoints(1:3))+1):sum(sidepoints)      ,2) = (ymax:-boundarydx(4):(ymin+boundarydx(4)));
-        % get the figure outline of flapping plate
-        [index,nx,ny,innerpoints] = linetopolygon(coor,halfheight);
         %% Write Gmesh *.geo File
         if num<10
             outfile = ['00' num2str(num)];
@@ -54,7 +49,7 @@ for kk=1:size(FileList,1)
         else
             outfile =       num2str(num) ;  
         end
-        writedata1 = [FilePath '\DatGeo\Mesh' outfile '.geo'];
+        writedata1 = [FilePath par 'DatGeo' par 'Mesh' outfile '.geo'];
         file = fopen(writedata1,'w');
         len  = size(innerpoints,1);
         fprintf(file,'// gmesh file for flapping plate\n\n');
@@ -168,14 +163,16 @@ for kk=1:size(FileList,1)
         % plane surface =====================================================================================
         fprintf(file,'Plane Surface(9) = {1,2};\n');
         fprintf(file,'Physical Surface(9) = {9};\n');
-        % fprintf(file,'\nRecombine Surface {644};\nMesh.RecombinationAlgorithm = 1;\n');
+        %fprintf(file,'\nRecombine Surface {9};\nMesh.RecombinationAlgorithm = 1;\n');
+        fprintf(file,'\nPrint.JpegSmoothing = 1;\n');
+        close all;
        %% Write Bounday Normal Vector
         vert = innerpoints(:,1) + innerpoints(:,2)*1i;
         lenv = length(vert);
         dz   = [vert(2:1:lenv) - vert(1:1:lenv-1); vert(1)-vert(lenv)];
         norm = -1i*dz./abs(dz);
         % write data
-        writedata2 = [FilePath '\DatPhi\Boundary' outfile '.plt'];
+        writedata2 = [FilePath par 'DatPhi' par 'Boundary' outfile '.plt'];
         file=fopen(writedata2,'w');
         fprintf(file,'VARIABLES=\"X\",\"Y\",\"nx\",\"ny\",\"ax\",\"ay\"\n');
         fprintf(file,'ZONE    F=POINT\n');
@@ -185,4 +182,6 @@ for kk=1:size(FileList,1)
         end
         fclose all;
     end
+    fprintf('%s Mesh Ready   ============================================\n',FileList(kk,:));
 end
+fprintf('*******************************************************************\n');

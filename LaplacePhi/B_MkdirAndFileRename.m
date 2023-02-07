@@ -1,29 +1,26 @@
-clc;
-clear;
-close all;
 %% Creat Folders
 run A_DefineFilePath.m
 for k=1:size(FileList,1)
-    fprintf('%s\n',FileList(k,:));
-    FilePath = [MkdirPath '\' FileList(k,:)];
-    CreatDir([FilePath '\DatPhi']);
-    CreatDir([FilePath '\Result']);
-    CreatDir([FilePath '\DatGeo']);
-    CreatDir([FilePath '\DatBodyN']);
-    CreatDir([FilePath '\Result\1VortexForce'  ]);
-    CreatDir([FilePath '\Result\2VicPreForce'  ]);
-    CreatDir([FilePath '\Result\3AddedForce'   ]);
-    CreatDir([FilePath '\Result\4FrictionForce']);
-    CreatDir([FilePath '\Result\5Combination'  ]);
-    CreatDir([FilePath '\Result\6PictureView'  ]);
-    CopyFile('.\Scripts\ForceCalculate.mcr' , FilePath);
-    CopyFile('.\Scripts\VortexFlowPlot.mcr' , FilePath);
-    CopyFile('.\Scripts\PhiACalculate.sh'   ,[FilePath '\DatGeo']);
-    CopyFile('.\Scripts\NearWallPlate.xml'  ,[FilePath '\DatGeo']);
-    CopyFile('.\Scripts\ForceAndPower.lay'  ,[FilePath '\Result']);
+    FilePath = [MkdirPath par FileList(k,:)];
+    CreatDir([FilePath par 'DatPhi']);
+    CreatDir([FilePath par 'Result']);
+    CreatDir([FilePath par 'DatGeo']);
+    CreatDir([FilePath par 'DatBodyS']);
+    CreatDir([FilePath par 'DatInfoS']);
+    CreatDir([FilePath par 'Result' par '1VortexForce'  ]);
+    CreatDir([FilePath par 'Result' par '2VicPreForce'  ]);
+    CreatDir([FilePath par 'Result' par '3AddedForce'   ]);
+    CreatDir([FilePath par 'Result' par '4FrictionForce']);
+    CreatDir([FilePath par 'Result' par '5Combination'  ]);
+    CreatDir([FilePath par 'Result' par '6PictureView'  ]);
+    CopyFile(['.' par 'Scripts' par 'ForceCalculate.mcr'] , FilePath, par);
+    CopyFile(['.' par 'Scripts' par 'VortexFlowPlot.mcr'] , FilePath, par);
+    CopyFile(['.' par 'Scripts' par 'PhiACalculate.sh'  ] ,[FilePath par 'DatGeo'],par);
+    CopyFile(['.' par 'Scripts' par 'NearWallPlate.xml' ] ,[FilePath par 'DatGeo'],par);
+    CopyFile(['.' par 'Scripts' par 'ForceAndPower.lay' ] ,[FilePath par 'Result'],par);
     %% Rename Files
-    if exist([FilePath '\DatFlow'],'dir')
-        subdir=dir([FilePath '\DatFlow']);
+    if exist([FilePath par 'DatFlow'],'dir')
+        subdir=dir([FilePath par 'DatFlow']);
         if size(subdir,1)<2
            error('There is no files in the folder')
         end
@@ -38,13 +35,15 @@ for k=1:size(FileList,1)
             end
             oldname = subdir(i).name;
             if ~strcmp(newname, oldname)
-            oldpath = fullfile([FilePath '\DatFlow'],oldname);
-            newpath = fullfile([FilePath '\DatFlow'],newname);
+            oldpath = fullfile([FilePath par 'DatFlow'],oldname);
+            newpath = fullfile([FilePath par 'DatFlow'],newname);
             movefile(oldpath,newpath)
             end
         end
     end
+    fprintf('%s Files Ready  ============================================\n',FileList(k,:));
 end
+fprintf('*******************************************************************\n');
 %% Functions
 function [] = CreatDir(path)
 if ~exist(path,'dir')
@@ -52,8 +51,8 @@ if ~exist(path,'dir')
 end
 end
 
-function [] = CopyFile(filename,path)
-if ~exist([path '\' filename],'file')
+function [] = CopyFile(filename,path,par)
+if ~exist([path par filename],'file')
     copyfile(filename,path);
 end
 end

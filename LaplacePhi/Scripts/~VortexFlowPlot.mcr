@@ -3,7 +3,7 @@
 $!Varset |NumLoop| = 001
 $!Varset |BackgroundVortex| = 0.00
 $!Varset |VortexRange| = 3.00
-$!Varset |PATH| = '/home/data/xluo/Cylinder3'
+$!Varset |PATH| = 'xxxxxxxxxxxxxxxxxxxxxxx'
 $!Loop |NumLoop| 
 
 $!IF |Loop|<10
@@ -14,7 +14,7 @@ $!ELSE
 $!VarSet |out| = '|Loop|'
 $!ENDIF
 
-$!VarSet |MFBD| = '|PATH|/DatFlow/Flow|out|.plt'
+$!VarSet |MFBD| = '|PATH|\DatFlow\Flow|out|.plt'
 
 $!ReadDataSet  '"|MFBD|" '
   ReadDataOption = New
@@ -88,7 +88,7 @@ $!SetContourVar
 $!FieldLayers ShowContour = Yes
 $!View Fit
   ConsiderBlanking = Yes
-$!ExportSetup ExportFName = '|PATH|/Result/6PictureView/Vortex|out|.png'
+$!ExportSetup ExportFName = '|PATH|\Result\6PictureView\Vortex|out|.png'
 $!Export 
   ExportRegion = AllFrames
 

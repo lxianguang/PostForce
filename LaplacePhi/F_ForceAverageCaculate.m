@@ -1,20 +1,17 @@
-clc
-clear
-%% Calculate The Average Force Of Swimming Plate In Shear Flow
-%% Reading Path
+%% Calculate The Average Force 
 run A_DefineFilePath.m
+%% Reading Path
 Abscissa = FileList(1,:);
 Abscissa(end-3:end) = [];
 %% Define Variables
 AverageData = zeros(7,size(FileList,1),4);
 for i=1:size(FileList,1)
-    fprintf('%s\n',FileList(i,:));
-    FilePath = [MkdirPath '\' FileList(i,:)];
+    FilePath = [MkdirPath par FileList(i,:)];
     % Combinate Path
-    forcexF = [FilePath '\Result\5Combination\ForceX.dat']; 
-    forceyF = [FilePath '\Result\5Combination\ForceY.dat']; 
-    powerxF = [FilePath '\Result\5Combination\PowerX.dat']; 
-    PoweryF = [FilePath '\Result\5Combination\PowerY.dat']; 
+    forcexF = [FilePath par 'Result' par '5Combination' par 'ForceX.dat']; 
+    forceyF = [FilePath par 'Result' par '5Combination' par 'ForceY.dat']; 
+    powerxF = [FilePath par 'Result' par '5Combination' par 'PowerX.dat']; 
+    PoweryF = [FilePath par 'Result' par '5Combination' par 'PowerY.dat']; 
     % Reading Files
     forcex = importdata(forcexF).data;
     forcey = importdata(forceyF).data;
@@ -57,14 +54,16 @@ for i=1:size(FileList,1)
     AverageData(:,i,3) = [time acceleAPx frictiAPx vicpreAPx vortexAPx resultAPx truereAPx];
     AverageData(:,i,4) = [time acceleAPy frictiAPy vicpreAPy vortexAPy resultAPy truereAPy];
 end
+fprintf('%s Data Average Ready =========================================\n',FileList(i,:));
+fprintf('*******************************************************************\n');
 %% Write Data
-CreatDir([MkdirPath '\PostAverage'])
+CreatDir([MkdirPath par 'PostAverage'])
 % Write Average Force
 [~,index] = sort(forcex(1,:));
 forcex = forcex(:,index);
 forcey = forcey(:,index);
-writeforcex = [MkdirPath '\PostAverage\AverageFx.dat'];
-writeforcey = [MkdirPath '\PostAverage\AverageFy.dat'];
+writeforcex = [MkdirPath par 'PostAverage' par 'AverageFx.dat'];
+writeforcey = [MkdirPath par 'PostAverage' par 'AverageFy.dat'];
 file=fopen(writeforcex,'w');
 fprintf(file,'VARIABLES=\"%s\",\"AccelerationFx\",\"FrictionFx\",\"VicpreFx\",\"VortexFx\",\"ResultantFx\",\"TrueResFx\"\n',Abscissa);
 for k=1:size(FileList,1)
@@ -79,8 +78,8 @@ fclose all;
 % Write Average Power
 powerx = powerx(:,index);
 powery = powery(:,index);
-writepowerx = [MkdirPath '\PostAverage\AveragePx.dat'];
-writepowery = [MkdirPath '\PostAverage\AveragePy.dat'];
+writepowerx = [MkdirPath par 'PostAverage' par 'AveragePx.dat'];
+writepowery = [MkdirPath par 'PostAverage' par 'AveragePy.dat'];
 file=fopen(writepowerx,'w');
 fprintf(file,'VARIABLES=\"%s\",\"AccelerationPx\",\"FrictionPx\",\"VicprePx\",\"VortePx\",\"ResultantPx\",\"TrueResPx\"\n',Abscissa);
 for k=1:size(FileList,1)
