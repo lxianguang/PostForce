@@ -4,44 +4,48 @@ run C_DataAveraging.m
 %% Define Parameters
 % domian size
 halfheight = 0.02;
-sideninnerpoint1    = [10.0, 20.0, 6.00, 6.00]; % Range based on head point(left,right,down,upper length)
+sidelen    = [20.00, 30.0, 20.0, 20.0]; % Range based on head point(left,right,down,upper length)
 % outer grid space and size
-boundarydx = [1.00, 0.50, 0.20, 0.50]; % down, right, upper, left boundary(outer)
-louter     = [1.00, 0.50, 0.20, 0.50]; % down, right, upper, left boundary(outer)
+boundarydx = [1.25, 1.25, 1.25, 1.25]; % down, right, upper, left boundary(outer)
+louter     = [2.00, 2.00, 2.00, 2.00]; % down, right, upper, left boundary(outer)
 % inner mesh size 1
-linner1    = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(inner)
+linner1    = [0.50, 0.50, 0.50, 0.50]; % down, right, upper, left boundary(inner)
 % inner mesh size 2
-linner2    = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(inner)
+linner2    = [0.50, 0.50, 0.50, 0.50]; % down, right, upper, left boundary(inner)
 for kk=1:size(FileList,1)
     fprintf('%s\n',FileList(kk,:));
     FilePath = [MkdirPath par FileList(kk,:)];
     subdir=dir([FilePath par 'DatBodyS']);
     subdir(1:2) = [];
     for num=1:size(subdir,1)/2
-        %% Load Plate Data
+        %% Load Plate Datap
         fininnerpoint1ame1 = subdir(2*num-1).name;
         fininnerpoint1ame2 = subdir(2*num  ).name;
         readfile1 = [FilePath par 'DatBodyS' par fininnerpoint1ame1];
         readfile2 = [FilePath par 'DatBodyS' par fininnerpoint1ame2];
         data1     = importdata(readfile1).data;
         data2     = importdata(readfile2).data;
-        coor1     = [data1(:,1) data1(:,2) data1(:,5) data1(:,6)]; % x, y, ax, ay
-        coor2     = [data2(:,1) data2(:,2) data2(:,5) data2(:,6)];
+        coor01     = [data1(:,1) data1(:,2) data1(:,5) data1(:,6)]; % x, y, ax, ay
+        coor02     = [data2(:,1) data2(:,2) data2(:,5) data2(:,6)];
+        len1 = size(coor01,1);
+        len2 = size(coor02,1);
+        coor1 = coor01(1:6:len1,:);
+        coor2 = coor02(1:6:len2,:);
         % get the figure outline of flapping plate
         [index1,nx1,ny1,innerpoints1] = linetopolygon(coor1,halfheight,0); % 0 closed body, 1 line
-        [index2,nx2,ny2,innerpoints2] = linetopolygon(coor2,halfheight,1);
+        [index2,nx2,ny2,innerpoints2] = linetopolygon(coor2,halfheight,0);
         ninnerpoint1  = size(innerpoints1,1);
         ninnerpoint2  = size(innerpoints2,1);
         % define domain
-        sidepoints  = [sum(sideninnerpoint1(1:2)),sum(sideninnerpoint1(3:4)),sum(sideninnerpoint1(1:2)),sum(sideninnerpoint1(3:4))]./boundarydx;
+        sidepoints  = [sum(sidelen(1:2)),sum(sidelen(3:4)),sum(sidelen(1:2)),sum(sidelen(3:4))]./boundarydx;
         nouterpoint = sum(sidepoints);
         outerpoints = zeros(nouterpoint,2);
         % coor(:,1) = coor(:,1) - coor(1,1);
         % coor(:,2) = coor(:,2) - coor(1,2);
-        xmin = coor1(1,1) - sideninnerpoint1(1);
-        xmax = coor1(1,1) + sideninnerpoint1(2);
-        ymin = coor1(1,2) - sideninnerpoint1(3);
-        ymax = coor1(1,2) + sideninnerpoint1(4);
+        xmin = coor1(1,1) - sidelen(1);
+        xmax = coor1(1,1) + sidelen(2);
+        ymin = coor1(1,2) - sidelen(3);
+        ymax = coor1(1,2) + sidelen(4);
         % get outer boundary points' coordinates
         outerpoints( 1                      :sidepoints(1)        ,1) = (xmin: boundarydx(1):(xmax-boundarydx(1)));
         outerpoints((sidepoints(1)+1)       :sum(sidepoints(1:2)) ,1) =  xmax;

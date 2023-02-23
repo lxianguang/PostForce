@@ -1,5 +1,5 @@
 #!MC 1410
-$!Varset |NumLoop| = 50
+$!Varset |NumLoop| = 1
 $!VarSet |PATH1| = '/home/data/xluo/Cylinder3'
 $!VarSet |PATH2| = '/home/data/xluo/Cylinder3'
 

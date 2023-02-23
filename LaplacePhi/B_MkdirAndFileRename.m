@@ -13,11 +13,11 @@ for k=1:size(FileList,1)
     CreatDir([FilePath par 'Result' par '4FrictionForce']);
     CreatDir([FilePath par 'Result' par '5Combination'  ]);
     CreatDir([FilePath par 'Result' par '6PictureView'  ]);
-    CopyFile(['.' par 'Scripts' par 'ForceCalculate.mcr'] , FilePath, par);
-    CopyFile(['.' par 'Scripts' par 'VortexFlowPlot.mcr'] , FilePath, par);
-    CopyFile(['.' par 'Scripts' par 'PhiACalculate.sh'  ] ,[FilePath par 'DatGeo'],par);
-    CopyFile(['.' par 'Scripts' par 'NearWallPlate.xml' ] ,[FilePath par 'DatGeo'],par);
-    CopyFile(['.' par 'Scripts' par 'ForceAndPower.lay' ] ,[FilePath par 'Result'],par);
+    CopyFile(['.' par 'Scripts' par 'ForceCalculate.mcr'] ,[FilePath par 'ForceCalculate.mcr']);
+    CopyFile(['.' par 'Scripts' par 'VortexFlowPlot.mcr'] ,[FilePath par 'VortexFlowPlot.mcr']);
+    CopyFile(['.' par 'Scripts' par 'PhiACalculate.sh'  ] ,[FilePath par 'DatGeo' par 'PhiACalculate.sh']);
+    CopyFile(['.' par 'Scripts' par 'NearWallPlate.xml' ] ,[FilePath par 'DatGeo' par 'NearWallPlate.xml']);
+    CopyFile(['.' par 'Scripts' par 'ForceAndPower.lay' ] ,[FilePath par 'Result' par 'ForceAndPower.lay']);
     %% Rename Files
     if exist([FilePath par 'DatFlow'],'dir')
         subdir=dir([FilePath par 'DatFlow']);
@@ -51,8 +51,8 @@ if ~exist(path,'dir')
 end
 end
 
-function [] = CopyFile(filename,path,par)
-if ~exist([path par filename],'file')
-    copyfile(filename,path);
+function [] = CopyFile(path1,path2)
+if ~exist(path2,'file')
+    copyfile(path1,path2);
 end
 end

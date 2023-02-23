@@ -18,8 +18,7 @@
 
         <BOUNDARYREGIONS>
             <B ID="0"> C[5-8] </B>    <!-- Wall -->
-            <B ID="1"> C[1,2,4] </B>  <!-- farfield -->
-            <B ID="2"> C[3] </B>      <!-- lower wall -->
+            <B ID="1"> C[1-4] </B>  <!-- farfield -->
         </BOUNDARYREGIONS>
 
         <BOUNDARYCONDITIONS>
@@ -32,11 +31,6 @@
                 <D VAR="phi0" VALUE="0." />
                 <D VAR="phi1" VALUE="0." />
                 <D VAR="phi2" VALUE="0." />
-            </REGION>
-            <REGION REF="2">
-                <N VAR="phi0" VALUE="0." />
-                <N VAR="phi1" VALUE="0." />
-                <N VAR="phi2" VALUE="0." />
             </REGION>
         </BOUNDARYCONDITIONS>
         

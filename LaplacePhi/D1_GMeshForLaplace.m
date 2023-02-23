@@ -4,11 +4,11 @@ run C_DataAveraging.m
 %% Define Parameters
 % domian size
 halfheight = 0.02;
-sidelen    = [6.00, 15.0, 5.00 5.00]; % Range based on head point(left,right,down,upper length)
+sidelen    = [5.50, 14.5, 5.50, 6.50]; % Range based on the head point(left,right,down,upper length)
 % outer grid space
 boundarydx = [0.20, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
-% inner mesh size
 louter     = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(outer)
+% inner mesh size
 linner     = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(inner)
 for kk=1:size(FileList,1)
     FilePath = [MkdirPath par FileList(kk,:)];

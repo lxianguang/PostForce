@@ -12,10 +12,10 @@ end
 % FileList  = ['WL0.00';'WL0.05';'WL0.10';'WL0.15';'WL0.20';'WL0.25';'WL0.30';'WL0.35';'WL0.40'];
 % FileList  = ['S0.00';'S0.10';'S0.20';'S0.30';'S0.40';'S0.50'];
 %% Test
-MkdirPath = ['G:' par 'DataFile' par 'WallPlate' par 'ForceCalculate' par 'Test'];
-FileList =('Cylinder1');
+MkdirPath = [par 'home' par 'data' par 'xluo' par 'LaplaceTest'];
+FileList =('Cylinder4');
 %% Data Smooth Parameters
-n_aver = [5 1 1 1 1 1];  % data averaging times for accleration, velocity, force, power, point velocity, stress energy
+n_aver = [0 0 0 0 0 0];  % data averaging times for accleration, velocity, force, power, point velocity, stress energy
 %% Force Combanation Parameters
 Re = 100;
 fprintf('Path And Parameter Set!\n');

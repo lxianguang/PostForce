@@ -3,15 +3,15 @@ clc
 clear
 format long
 PeriodLen = 1.0;
-Periodnum = 20;
-Shear     = 0.00;       % dimensionless shear rate
+Periodnum = 10;
+Shear     = 0.50;       % dimensionless shear rate
 Amp       = 0.25;       % amplitude (half peak-to-peak value)
-dt        = 1/10000;    % dimensionless time step by period
+dt        = 1/4000;    % dimensionless time step by period
 doutFlow  = 1/8;        % flow field output time interval per period
 doutInfo  = doutFlow/128;    % flow infomation output time interval per period
 %% values with dimension
-dtreal    = 1/100.;      % mesh size
-Lreal     = 1.0;         % plate length
+dtreal    = 0.03;       % mesh size
+Lreal     = 1.0;        % plate length
 %% parameters with dimension (used in the input file)
 %% for reference velocity 11, U_ref is the maximum plunging velocity
 T         = dtreal / dt;

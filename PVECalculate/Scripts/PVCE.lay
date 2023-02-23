@@ -1,6 +1,6 @@
 #!MC 1410
 $!VarSet |LFDSFN1| = '"PVCE.dat"'
-$!VarSet |LFDSVL1| = '"K" "P_Avearage" "U_Avearage" "Efficiency" "StressEnergy"'
+$!VarSet |LFDSVL1| = '"H" "P_Avearage" "U_Avearage" "Efficiency" "StressEnergy"'
 $!SetStyleBase Factory
 $!GlobalPaper 
   PaperSizeInfo
@@ -87,7 +87,7 @@ $!GlobalLinePlot
     XYPos
       {
       X = 87.394
-      Y = 80.556
+      Y = 81.112
       }
     }
 $!LineMap  [1]
@@ -193,7 +193,7 @@ $!LineMap  [3]
     Color = Red
     }
 $!LineMap  [4]
-  Name = 'StressPower'
+  Name = 'StressEnergy'
   Assign
     {
     Zone = 1
@@ -235,38 +235,17 @@ $!XYLineAxis
     }
   ViewportPosition
     {
-    X1 = 14.802
-    Y1 = 20.111
-    X2 = 89.802
-    Y2 = 80.111
+    X1 = 15
+    Y1 = 20
+    X2 = 90
+    Y2 = 80
     }
-  ViewportTopSnapTarget = 80.111
+  ViewportTopSnapTarget = 80
 $!XYLineAxis 
   XDetail 1
     {
     RangeMin = 0
-    RangeMax = 50
-    GRSpacing = 10
-    TickLabel
-      {
-      TextShape
-        {
-        IsBold = Yes
-        Height = 4
-        }
-      }
-    Title
-      {
-      TitleMode = UseText
-      Text = 'K'
-      Offset = 5
-      }
-    }
-$!XYLineAxis 
-  YDetail 1
-    {
-    RangeMin = 0
-    RangeMax = 5
+    RangeMax = 10
     AutoGrid = No
     GRSpacing = 1
     TickLabel
@@ -280,7 +259,30 @@ $!XYLineAxis
     Title
       {
       TitleMode = UseText
+      Text = 'H'
+      Offset = 5
+      }
+    }
+$!XYLineAxis 
+  YDetail 1
+    {
+    RangeMin = 1
+    RangeMax = 4
+    AutoGrid = No
+    GRSpacing = 0.5
+    TickLabel
+      {
+      TextShape
+        {
+        IsBold = Yes
+        Height = 4
+        }
+      }
+    Title
+      {
+      TitleMode = UseText
       Text = 'Velocity,Power'
+      Offset = 7
       }
     }
 $!LinePlotLayers 
