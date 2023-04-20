@@ -1,11 +1,14 @@
-%% Mesh for flexible plate
+clc
+clear
+close all
+%% Gmesh File for flexible plate
 format long
 %% Define Parameters
 % size parameters
-lengthx = 1.00;
+lengthx = 0.50;
 lengthy = 1.00;
 npointx = 21;
-npointy = 21;
+npointy = 41; % Must be odd
 % mesh size
 gmesh   = [1.00, 1.00, 1.00, 1.00]; % left, down, right, upper
 dx      = lengthx / (npointx - 1);
@@ -21,13 +24,13 @@ coor(pointsB(3):pointsE(3), 1) = lengthx;
 coor(pointsB(4):pointsE(4), 1) = (lengthx-dx:-dx:0);
 coor(pointsB(5):pointsE(5), 1) = 0;
 
-coor(pointsB(1):pointsE(1), 2) = (0:dy:lengthy/2);
-coor(pointsB(2):pointsE(2), 2) = lengthy/2;
-coor(pointsB(3):pointsE(3), 2) = (lengthy/2-dy:-dy:-lengthy/2);
-coor(pointsB(4):pointsE(4), 2) = -lengthy/2;
-coor(pointsB(5):pointsE(5), 2) = (-lengthy/2+dy:dy:-dy);
+coor(pointsB(1):pointsE(1), 2) = (0:-dy:-lengthy/2);
+coor(pointsB(2):pointsE(2), 2) = -lengthy/2;
+coor(pointsB(3):pointsE(3), 2) = (-lengthy/2+dy:dy:lengthy/2);
+coor(pointsB(4):pointsE(4), 2) =  lengthy/2;
+coor(pointsB(5):pointsE(5), 2) = (lengthy/2-dy:-dy:dy);
 % write points  =====================================================================================
-writedata = 'G:\WorkingFile\DataTools\PostForce\OtherTools\Plate.geo';
+writedata = '.\Scripts\Plate.geo';
 file = fopen(writedata,'w');
 fprintf(file,'// gmesh file for flapping plate\n\n');
 for i=pointsB(1):pointsE(1)
@@ -88,3 +91,7 @@ fprintf(file,'\nPlane Surface(5) = {1};\n');
 fprintf(file,'\nPhysical Surface(6) = {5};\n');
 fprintf(file,'\nPrint.JpegSmoothing = 1;\n');
 fclose all;
+
+figure(1)
+plot(coor(:,1),coor(:,2),'*')
+axis equal
