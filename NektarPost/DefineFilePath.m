@@ -19,6 +19,7 @@ AD = 0.50;
 np = 12;       % cpu cores
 NT = 30;       % Calculated number of periods
 %% Other Parameters
+MovingType= 0; % 0 pitching, 1 plunging
 Thickness = 0.15;
 Uinf      = 1.00;
 ReList    = Re*ones(ListLen,1);

@@ -7,7 +7,11 @@ for filenum=1:ListLen
     Files = [Files    FileList(filenum,:) ' ' ];
     creatfolder(nFile);
     copyfile(['.' par 'Scripts' par 'airfoilMesh.xml'], [nFile par 'airfoilMesh.xml']);
-    copyfile(['.' par 'Scripts' par 'airfoilPara.xml'], [nFile par 'airfoilPara.xml']);
+    if MovingType==0
+        copyfile(['.' par 'Scripts' par 'airfoilPitchingPara.xml'], [nFile par 'airfoilPara.xml']);
+    elseif MovingType==1
+        copyfile(['.' par 'Scripts' par 'airfoilPlungingPara.xml'], [nFile par 'airfoilPara.xml']);
+    end
     replacefileline([nFile par 'airfoilPara.xml'],21,num2str(ADList(filenum)),'@');
     replacefileline([nFile par 'airfoilPara.xml'],22,num2str(StList(filenum)),'@');
     replacefileline([nFile par 'airfoilPara.xml'],23,num2str(ReList(filenum)),'@');

@@ -66,15 +66,22 @@ for filenum=1:ListLen
     Friction = zeros(ForceLen,2);
     Accelera = zeros(ForceLen,2);
     Vicpress = zeros(ForceLen,2);
-    for i=1:ForceLen
-        VortexForce(i,1) = VortexForceT(i,1)*cos(theta(i))-VortexForceT(i,2)*sin(theta(i));
-        VortexForce(i,2) = VortexForceT(i,1)*sin(theta(i))+VortexForceT(i,2)*cos(theta(i));
-        Friction(i,1) = FrictionT(i,1)*cos(theta(i))-FrictionT(i,2)*sin(theta(i));
-        Friction(i,2) = FrictionT(i,1)*sin(theta(i))+FrictionT(i,2)*cos(theta(i));
-        Accelera(i,1) = AcceleraT(i,1)*cos(theta(i))-AcceleraT(i,2)*sin(theta(i));
-        Accelera(i,2) = AcceleraT(i,1)*sin(theta(i))+AcceleraT(i,2)*cos(theta(i));
-        Vicpress(i,1) = VicpressT(i,1)*cos(theta(i))-VicpressT(i,2)*sin(theta(i));
-        Vicpress(i,2) = VicpressT(i,1)*sin(theta(i))+VicpressT(i,2)*cos(theta(i));
+    if MovingType
+        VortexForce = VortexForceT;
+        Friction    = FrictionT;
+        Accelera    = AcceleraT;
+        Vicpress    = VicpressT;
+    else
+        for i=1:ForceLen
+            VortexForce(i,1) = VortexForceT(i,1)*cos(theta(i))-VortexForceT(i,2)*sin(theta(i));
+            VortexForce(i,2) = VortexForceT(i,1)*sin(theta(i))+VortexForceT(i,2)*cos(theta(i));
+            Friction(i,1) = FrictionT(i,1)*cos(theta(i))-FrictionT(i,2)*sin(theta(i));
+            Friction(i,2) = FrictionT(i,1)*sin(theta(i))+FrictionT(i,2)*cos(theta(i));
+            Accelera(i,1) = AcceleraT(i,1)*cos(theta(i))-AcceleraT(i,2)*sin(theta(i));
+            Accelera(i,2) = AcceleraT(i,1)*sin(theta(i))+AcceleraT(i,2)*cos(theta(i));
+            Vicpress(i,1) = VicpressT(i,1)*cos(theta(i))-VicpressT(i,2)*sin(theta(i));
+            Vicpress(i,2) = VicpressT(i,1)*sin(theta(i))+VicpressT(i,2)*cos(theta(i));
+        end
     end
     % Resultant force calculated by WPS theory
     Resultant = zeros(ForceLen,2);

@@ -3,8 +3,8 @@ clc
 %% Input parameters for NACA0015 pitching
 Uinfty = 1.;
 Vinfty = 0.;
-St = 0.30;
-AD = 2.00;
+St = 0.15;
+AD = 0.80;
 NT = 30.0;
 thickness = 0.15;
 freq      = St*Uinfty/thickness;
@@ -43,7 +43,6 @@ for ii=1:1:len
 end
 force = [t Fax Fay];
 %% Write data
-% write mesh file
 filename = '.\Scripts\AddedMassFocre.dat';
 file=fopen(filename,'w');
 fprintf(file,'VARIABLES="T","Fx","Fy"');

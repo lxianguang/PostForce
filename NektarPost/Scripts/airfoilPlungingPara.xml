@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NEKTAR>
+    <EXPANSIONS>
+        <E COMPOSITE="C[5]" NUMMODES="6, 6" BASISTYPE="Modified_A,Modified_A" POINTSTYPE="GaussLobattoLegendre,GaussLobattoLegendre"   NUMPOINTS="9,9" FIELDS="u,v" />
+        <E COMPOSITE="C[5]" NUMMODES="5, 5" BASISTYPE="Modified_A,Modified_A" POINTSTYPE="GaussLobattoLegendre,GaussLobattoLegendre"   NUMPOINTS="9,9" FIELDS="p" />
+        <E COMPOSITE="C[6]" NUMMODES="6, 6" BASISTYPE="Modified_A,Modified_B" POINTSTYPE="GaussLobattoLegendre,GaussRadauMAlpha1Beta0" NUMPOINTS="9,8" FIELDS="u,v" />
+        <E COMPOSITE="C[6]" NUMMODES="5, 5" BASISTYPE="Modified_A,Modified_B" POINTSTYPE="GaussLobattoLegendre,GaussRadauMAlpha1Beta0" NUMPOINTS="9,8" FIELDS="p" />
+    </EXPANSIONS>
+    <CONDITIONS>
+        <SOLVERINFO>
+            <I PROPERTY="EQTYPE" VALUE="UnsteadyNavierStokes" />
+            <I PROPERTY="SolverType" VALUE="VelocityCorrectionScheme" />
+            <I PROPERTY="EvolutionOperator" VALUE="Nonlinear"/>
+            <I PROPERTY="AdvectionForm" VALUE="Convective"/>
+            <I PROPERTY="Projection" VALUE="Galerkin" />
+            <I PROPERTY="TimeIntegrationMethod" VALUE="IMEXOrder2" />
+            <I PROPERTY="SpectralVanishingViscositySpectralHP"    VALUE="DGKernel" />
+            <I PROPERTY="GlobalSysSoln"                 VALUE="XxtMultiLevelStaticCond"  />
+        </SOLVERINFO>
+        <PARAMETERS>
+            <P> AD      = @                      </P>
+            <P> St      = @                      </P>
+            <P> Re      = @                      </P>
+            <P> NperT   = 8000                   </P>
+            <P> NT      = @                      </P>
+            <P> IO_CheckSteps = NperT/@          </P>
+            
+            <P> Uinf    = 1.                     </P>
+            <P> Vinf    = 0.0                    </P>
+            <P> Thickness    = 0.15              </P>
+            <P> freq    = St*Uinf/Thickness      </P>
+            <P> Amplitude    = AD * Thickness    </P>
+            <P> TimeStep     = 1./(freq * NperT) </P>
+            <P> NumSteps     = NT * NperT        </P>
+            <P> IO_InfoSteps = 10                </P>
+            <P> IO_CFLSteps  =  10               </P>
+            <P> Kinvis       = Uinf/Re           </P>
+            <P> omega        = 2.*PI*freq        </P>
+            <P> SVVDiffCoeff = 0.1               </P>
+        </PARAMETERS> 
+        <VARIABLES>
+            <V ID="0"> u </V>
+            <V ID="1"> v </V>
+            <V ID="2"> p </V>
+        </VARIABLES>
+        <BOUNDARYREGIONS>
+            <B ID="0"> C[0] </B>      <!-- wall -->
+            <B ID="1"> C[1] </B>      <!-- inflow -->
+            <B ID="2"> C[2] </B>      <!-- outflow -->
+            <B ID="3"> C[3] </B>      <!-- Far Field -->
+            <B ID="4"> C[4] </B>      <!-- Far Field -->
+        </BOUNDARYREGIONS>
+        <BOUNDARYCONDITIONS>
+            <REGION REF="0"> 
+                <D VAR="u" VALUE="0" />
+                <D VAR="v" USERDEFINEDTYPE="TimeDependent" VALUE="Amplitude*0.5*omega*sin(omega*t)" />
+                <N VAR="p" USERDEFINEDTYPE="H" VALUE="0" />  
+            </REGION>
+           
+            <REGION REF="1"> 
+                <D VAR="u" VALUE="Uinf" />
+                <D VAR="v" VALUE="Vinf" />
+                <D VAR="p" VALUE="0" />  
+            </REGION>
+
+            <REGION REF="2"> <!-- outflow -->
+                <N VAR="u" VALUE="0.0" USERDEFINEDTYPE="HOutflow" />
+                <N VAR="v" VALUE="0.0" USERDEFINEDTYPE="HOutflow" />
+                <D VAR="p" VALUE="0.0" USERDEFINEDTYPE="HOutflow" />
+            </REGION>
+
+            <REGION REF="3"> 
+                <D VAR="u" VALUE="Uinf" />
+                <D VAR="v" VALUE="Vinf" />
+                <D VAR="p" VALUE="0" />  
+            </REGION>
+            <REGION REF="4">
+                <D VAR="u" VALUE="Uinf" />
+                <D VAR="v" VALUE="Vinf" />
+                <D VAR="p" VALUE="0" />  
+            </REGION>
+        </BOUNDARYCONDITIONS>
+        
+        <FUNCTION NAME="InitialConditions">
+            <E VAR="u" VALUE="Uinf" />
+            <E VAR="v" VALUE="Vinf" />
+            <E VAR="p" VALUE="0" />
+        </FUNCTION>
+       
+        <FUNCTION NAME="VelMRF">
+                <E VAR="v" VALUE="Amplitude*0.5*omega*sin(omega*t)" />
+        </FUNCTION>
+        
+    </CONDITIONS>
+
+    <FORCING>
+        <FORCE TYPE="MovingReferenceFrame">
+            <LinearVelocity> VelMRF </LinearVelocity>
+        </FORCE>
+    </FORCING>
+ 
+   <FILTERS> 
+      <FILTER TYPE="AeroForces">
+           <PARAM NAME="OutputFile">dragLift</PARAM>
+           <PARAM NAME="OutputFrequency">10</PARAM>
+           <PARAM NAME="Boundary"> B[0] </PARAM>
+           <PARAM NAME="MomentPoint">0. 0.0 0. </PARAM>
+      </FILTER>
+   </FILTERS>
+
+</NEKTAR>
