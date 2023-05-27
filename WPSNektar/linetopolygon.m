@@ -52,26 +52,26 @@ elseif type==2
     indexline1 = (1:1:mid-1);
     % arc  0
     alpha = atan((data(1,2)-data(mid,2))/(data(1,1)-data(mid,1)));     
-    [narc0,nhalf0,dalpha0] = arcPoints(pi - 2*alpha, halfheight, dL);
+    [~,nhalf0,dalpha0] = arcPoints(pi - 2*alpha, halfheight, dL);
     the0  = pi + (-(nhalf0+1)*dalpha0:dalpha0:(nhalf0+1)*dalpha0)';
     arc0  = verts(mid) + halfheight*(cos(the0)+sin(the0)*1i);
-    indexarc0 = mid*ones(1,narc0+2);
+    indexarc0 = mid*ones(1,length(arc0));
     % line 2
     vert2 = verts(mid+1:end) + halfheight*dnorm(mid+1:end);
     indexline2= (mid+1:1:len);
     % arc  1
     arc1      = verts(len)  + (dh*(np-1):-dh:-dh*(np-1))'*dnorm(end);
-    indexarc1 = len*ones(1,2*np-1);
+    indexarc1 = len*ones(1,length(arc1));
     % line 3 
     halfvert1 = verts(end:-1:(mid+1)) - halfheight*dnorm(end:-1:(mid+1));
     halfvert1(imag(halfvert1)>=0)=[];
-    halfvert2 = verts((mid-1):-1:1   ) - halfheight*dnorm((mid-1):-1:1  );
+    halfvert2 = verts((mid-1):-1:1  ) - halfheight*dnorm((mid-1):-1:1  );
     halfvert2(imag(halfvert2)<=0)=[];
     vert3     = [halfvert1;halfvert2]; 
-    indexline3= [len:-1:2*mid-size(halfvert1) size(halfvert1):-1:1];
+    indexline3= [len:-1:len-size(halfvert1)+1 size(halfvert2):-1:1];
     % arc  2
     arc2      = verts(1)       + (-dh*(np-1):dh:dh*(np-1))'*dnorm(1);
-    indexarc2= 1*ones(1,2*np-1);
+    indexarc2= 1*ones(1,length(arc2));
     % combination
     vert  = [vert1;arc0;vert2;arc1;vert3;arc2];
     npoints   = length(vert);
@@ -118,30 +118,30 @@ elseif type==4
     indexline1 = (1:1:mid-1);
     % arc  0
     alpha = atan((data(1,2)-data(mid,2))/(data(1,1)-data(mid,1)));     
-    [narc0,nhalf0,dalpha0] = arcPoints(pi - 2*alpha, halfheight, dL);
+    [~,nhalf0,dalpha0] = arcPoints(pi - 2*alpha, halfheight, dL);
     the0  = pi + (-(nhalf0+1)*dalpha0:dalpha0:(nhalf0+1)*dalpha0)';
     arc0  = verts(mid) + halfheight*(cos(the0)+sin(the0)*1i);
-    indexarc0  = mid*ones(1,narc0+2);
+    indexarc0  = mid*ones(1,length(arc0));
     % line 2
     vert2 = verts(mid+1:end) + halfheight*dnorm(mid+1:end);
     indexline2 = (mid+1:1:len);
     % arc  1
     norm  = verts(end) - verts(end - 1);
-    [the1,narc1,~] = endArcPoints(norm,halfheight,dL);
+    [the1,~,~] = endArcPoints(norm,halfheight,dL);
     arc1  = verts(end) + halfheight*(cos(the1)+sin(the1)*1i);
-    indexarc1  = len*ones(len,narc1);
+    indexarc1  = len*ones(1,length(arc1));
     % line 3 
     halfvert1 = verts(end:-1:(mid+1)) - halfheight*dnorm(end:-1:(mid+1));
     halfvert1(imag(halfvert1)>=0)=[];
     halfvert2 = verts((mid-1):-1:1   ) - halfheight*dnorm((mid-1):-1:1  );
     halfvert2(imag(halfvert2)<=0)=[];
     vert3 = [halfvert1;halfvert2]; 
-    indexline3 = [len:-1:2*mid-size(halfvert1) size(halfvert1):-1:1];
+    indexline3 = [len:-1:len-size(halfvert1)+1 size(halfvert2):-1:1];
     % arc  2
     norm  = verts(1) - verts(2);
-    [the2,narc2,~] = endArcPoints(norm,halfheight,dL);
+    [the2,~,~] = endArcPoints(norm,halfheight,dL);
     arc2  = verts(1) + halfheight*(cos(the2)+sin(the2)*1i);
-    indexarc2  = 1*ones(1,narc2);
+    indexarc2  = 1*ones(1,length(arc2));
     % combination
     vert  = [vert1;arc0;vert2;arc1;vert3;arc2];
     npoints   = length(vert);

@@ -1,9 +1,9 @@
 #!MC 1410
 #!Plot Vortex Flow
-$!Varset |NumLoop| = 001
+$!Varset |NumLoop| = &
 $!Varset |BackgroundVortex| = 0.00
 $!Varset |VortexRange| = 3.00
-$!Varset |PATH| = '/home/data/xluo/Cylinder3'
+$!Varset |PATH| = '&'
 $!Loop |NumLoop| 
 
 $!IF |Loop|<10

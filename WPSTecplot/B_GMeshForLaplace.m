@@ -2,20 +2,26 @@
 format long
 run A_ParamtersDefine.m
 run FileAndFolderSet.m
-run SmoothAcceleration.m
+if bodyType
+    run SmoothAcceleration.m
+end
 % domian size
-halfheight = 0.02;
-walldx     = 0.01;
-wallY      = 0.00;
-sidelen    = [3.00, 12.0, 3.00, 3.00]; % Range based on the head point(left,right,down,upper length)
+griddx     = 0.02;
+halfheight = griddx*1.0; 
+wallY      =-5.00;
+sidelen    = [3.00, 17.0, 4.00, 4.00]; % Range based on the head point(left,right,down,upper length)
 % outer grid space
-boundarydx = [0.02, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(outer)
-louter     = [0.02, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(outer)
+boundarydx = [0.02, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
+louter     = [0.02, 0.20, 0.20, 0.20]; % down, right, upper, left boundary(outer)
 % inner mesh size
 linner     = 0.10 ; 
 for kk=1:size(FileList,1)
     FilePath = [MkdirPath par FileList(kk,:)];
-    subdir=dir([FilePath par 'DatBodyS']);
+    if bodyType==0
+        subdir=dir([FilePath par 'DatBody']);
+    else
+        subdir=dir([FilePath par 'DatBodyS']);
+    end
     subdir(1:2) = [];
     %% Change Laplace Solve Parameters
     copyfile(['.' par 'Scripts' par 'Universal' par 'LaplaceSolve.sh'] ,[FilePath par 'DatGeo' par 'LaplaceSolve.sh']);
@@ -23,20 +29,27 @@ for kk=1:size(FileList,1)
     for num=1:size(subdir,1)
        %% Load Plate Data
         filename = subdir(num).name;
-        readfile = [FilePath par 'DatBodyS' par filename];
-        data     = importdata(readfile).data;
-        coor     = [data(:,1) data(:,2) data(:,5) data(:,6)]; % x, y, ax, ay
+        if bodyType==0
+            readfile = [FilePath par 'DatBody' par filename];
+            time     = str2double(filename(9:18));
+            data     = importdata(readfile).data;
+            acce     = -Amp.*cos(2.0*pi*Fre*time+Phi)*(2.0*pi*Fre)*(2.0*pi*Fre);
+            coor     = [data(:,1) data(:,2)]; % x, y
+        else
+            readfile = [FilePath par 'DatBodyS' par filename];
+            data     = importdata(readfile).data;
+            coor     = [data(:,1) data(:,2) data(:,5) data(:,6)]; % x, y, ax, ay
+        end
         % get the figure outline of flapping plate
         [index,ninner,innerpoints] = linetopolygon(coor,halfheight,bodyType); % 0 closed body, 1 line
         % define domain
         sidepoints  = [sum(sidelen(1:2)),sum(sidelen(3:4)),sum(sidelen(1:2)),sum(sidelen(3:4))]./boundarydx;
         npoints     = sum(sidepoints);
         outerpoints = zeros(npoints,2);
-        midnum = floor(size(coor,1)/2)+1;
-        xmin   = coor(midnum,1) - sidelen(1);
-        xmax   = coor(midnum,1) + sidelen(2);
+        xmin   = min(coor(:,1)) - sidelen(1);
+        xmax   = min(coor(:,1)) + sidelen(2);
         if isNearWall==1
-            ymin = wallY + halfheight;
+            ymin = wallY + griddx * 2.0;
             ymax = ymin  + sum(sidelen(3:4));
         else
             if bodyType==2
@@ -162,15 +175,19 @@ for kk=1:size(FileList,1)
         fprintf(file,'ZONE    F=POINT\n');
         fprintf(file,'I=%d,   J=%d\n',length(verts),1);
         for i=1:length(verts)
-            fprintf(file,'%6f    %6f    %6f    %6f    %6f    %6f\n',innerpoints(i,1),innerpoints(i,2),real(dnorm(i)),imag(dnorm(i)),coor(index(i),3),coor(index(i),4));
+            if bodyType==0
+                fprintf(file,'%6f    %6f    %6f    %6f    %6f    %6f\n',innerpoints(i,1),innerpoints(i,2),real(dnorm(i)),imag(dnorm(i)),acce(1),acce(2));
+            else
+                fprintf(file,'%6f    %6f    %6f    %6f    %6f    %6f\n',innerpoints(i,1),innerpoints(i,2),real(dnorm(i)),imag(dnorm(i)),coor(index(i),3),coor(index(i),4));
+            end
         end
         fclose(file);
        %% write wall mesh data
         if isNearWall==1
-            lenx = sum(sidelen(1:2))/walldx;
+            lenx = sum(sidelen(1:2))/griddx;
             wallpoints      = zeros(lenx,2);
-            wallpoints(:,1) = (xmin:walldx:(xmax - walldx));
-            wallpoints(:,2) = ymin;
+            wallpoints(:,1) = (xmin:griddx:(xmax - griddx));
+            wallpoints(:,2) = ymin+0.5*griddx;
             [wallname,~] = filenameget(num,'Wall','Wall','.plt');
             writedata3 = [FilePath par 'DatPhi' par wallname];
             file=fopen(writedata3,'w');

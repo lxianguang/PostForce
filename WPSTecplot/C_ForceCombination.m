@@ -3,7 +3,11 @@ run A_ParamtersDefine.m
 for k=1:size(FileList,1)
     FilePath = [MkdirPath par FileList(k,:)];
     %% Reading Time
-    subdir      = dir([FilePath par 'DatBodyS']);
+    if bodyType==0
+        subdir  = dir([FilePath par 'DatBody' ]);
+    else
+        subdir  = dir([FilePath par 'DatBodyS']);
+    end
     subdir(1:2) = [];
     numlen      = size (subdir,1);
     datatime    = zeros(numlen,1);
