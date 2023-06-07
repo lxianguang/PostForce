@@ -1,7 +1,7 @@
 clc
 clear
 %% parameters
-l = 500;
+l = 250;
 h = 0.1*l;
 x = (-l/2:1:l/2);
 t = 0.0;
@@ -26,3 +26,10 @@ ny = [y1(1:1:le) y2(le-1:-1:1)];
 %% plot
 plot(nx,ny,'k','LineWidth',2.0,'LineStyle','-');
 axis equal
+box on
+ax = gca;
+ax.BoxStyle = 'full';
+set(gca,'xtick',[],'xticklabel',[])
+set(gca,'ytick',[],'yticklabel',[])
+set(gca,'ztick',[],'zticklabel',[])
+axis([-l/1.5 l/1.5 -h*1.5 h*1.5])
