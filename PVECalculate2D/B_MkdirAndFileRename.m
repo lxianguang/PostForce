@@ -5,8 +5,9 @@ for k=1:size(FileList,1)
     CreatDir([FilePath par 'DatFlow']);
     CreatDir([FilePath par 'Picture']);
     CreatDir([FilePath par 'DatBody']);
-    CopyFile(['.' par 'Scripts' par 'Velocity.lay'] ,[FilePath par 'Velocity.lay']);
-    CopyFile(['.' par 'Scripts' par 'Vortex.lay'  ] ,[FilePath par 'Vortex.lay'  ]);
+    CreatDir([FilePath par 'DatInfo']);
+    CopyFile(['.' par 'Scripts' par 'VelocityPlot.lay'] ,[FilePath par 'VelocityPlot.lay']);
+    CopyFile(['.' par 'Scripts' par 'VortexPlot.lay'  ] ,[FilePath par 'VortexPlot.lay'  ]);
 end
 fprintf('Files ready!\n');
 fprintf('*******************************************************************\n');

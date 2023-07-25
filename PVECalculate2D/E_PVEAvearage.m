@@ -8,7 +8,6 @@ name          = zeros(len,1);
 efficiency    = zeros(len,1);
 powerAver     = zeros(len,1);
 velocityAver  = zeros(len,1);
-placementAver = zeros(len,1);
 forceAver     = zeros(len,1);
 stressEnergy  = zeros(len,1);
 %% Calculate 
@@ -18,12 +17,11 @@ for i=1:len
     ntime    = importdata([PastePath par 'Power'     par FileList(i,:) '.dat']).data(:,1);
     power    = importdata([PastePath par 'Power'     par FileList(i,:) '.dat']).data(:,3); 
     velocity = importdata([PastePath par 'Velocity'  par FileList(i,:) '.dat']).data(:,4); 
-    energy   = importdata([PastePath par 'Energy'    par FileList(i,:) '.dat']).data(:,4); 
+    energy   = importdata([PastePath par 'Energy'    par FileList(i,:) '.dat']).data(:,7); 
     force    = importdata([PastePath par 'Force'     par FileList(i,:) '.dat']).data(:,2); 
-    placement= importdata([PastePath par 'Placement' par FileList(i,:) '.dat']).data(:,2); 
     % extract data 
-    index1   = find(ntime < Period1 * Period(i));
-    index2   = find(ntime > Period2 * Period(i));
+    index1   = find(ntime <= Period1 * Period(i));
+    index2   = find(ntime >= Period2 * Period(i));
     inum1    = index1(end);
     inum2    = index2(1)-1;
     % fix data
@@ -36,33 +34,31 @@ for i=1:len
     newpower    = power    (inum1:inum2);
     newenergy   = energy   (inum1:inum2);
     newforce    = force    (inum1:inum2);
-    newplacement= placement(inum1:inum2);
     % calculate average
-    uadd = name(i) * 2.00;
+    uadd = name(i) * 0.00;
     kineticEnergy    = sum((uadd - newvelocity).^2)/length(newpower)/2;
     
     velocityAver (i) = abs(sum(uadd - newvelocity)/length(newpower)); % Relative velocity of flow field
     powerAver    (i) = abs(sum(newpower     )/length(newpower));
-    placementAver(i) = sum(abs(newplacement))/length(newpower);
-    stressEnergy (i) = abs(sum(newenergy    )/length(newpower))/(powerAver(i)*Period(i));
-%    efficiency   (i) = kineticEnergy/(powerAver(i)*Period(i));
+    stressEnergy (i) = abs(sum(newenergy    )/length(newpower));
+    %efficiency   (i) = kineticEnergy/(powerAver(i));
     efficiency  (i) = velocityAver(i   )/powerAver(i     );
 
     fprintf('%s Force Average Ready =====================================\n',FileList(i,:));
 end
 fprintf('*******************************************************************\n');
 fprintf('Have you change the period length ?????????????????????????????????\n');
+%% sort data
 [name,index]   = sort(name);
 efficiency1    = efficiency   (index);
 powerAvearage1 = powerAver    (index);
 velAvearage1   = velocityAver (index);
 stressEnergy1  = stressEnergy (index);
-yplacement     = placementAver(index);
-% write data
+%% write data
 writefile      = [PastePath par 'Result' par 'PUESY.dat'];
 file=fopen(writefile,'w');
-fprintf(file,'VARIABLES=\"%s\",\"P_Avearage\",\"U_Avearage\",\"Efficiency\",\"StressEnergy\",\"yPlacement\"\n',Abscissa);
+fprintf(file,'VARIABLES=\"%s\",\"P_Avearage\",\"U_Avearage\",\"Efficiency\",\"TotalEnergy\"\n',Abscissa);
 for i=1:length(name)
-    fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',name(i),powerAvearage1(i),velAvearage1(i),efficiency1(i),stressEnergy1(i),yplacement(i));
+    fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f\n',name(i),powerAvearage1(i),velAvearage1(i),efficiency1(i),stressEnergy1(i));
 end
 fclose all;

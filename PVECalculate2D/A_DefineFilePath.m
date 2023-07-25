@@ -8,20 +8,19 @@ else
     par = '/';
 end
 %% Define File Path
-CopyPath  = ['G:' par 'DataFile' par 'FishNearWall2D' par 'PostData'      par 'Re100A0.50K3.50H2.00S'];
-PastePath = ['G:' par 'DataFile' par 'FishNearWall2D' par 'PVCECalculate' par 'Re100A0.50K3.50H2.00S'];
-% FileList  = ['K1.00';'K1.50';'K2.00';'K2.50';'K3.00';'K3.50';'K4.00';'K5.00';'K6.00';'K8.00';'K10.0';'K20.0';'K30.0';'K40.0';'K50.0'];
-FileList  = ['S0.00';'S0.10';'S0.20';'S0.30';'S0.40';'S0.50';'S0.60';'S0.70';'S0.80';'S0.90';'S1.00'];
-% FileList  = ['H1.00';'H1.25';'H1.50';'H1.75';'H2.00';'H2.50';'H3.00';'H4.00';'H5.00';'H6.00';'H7.00';'H8.00';'H9.00';'H10.0'];
-% FileList  = ['A0.150';'A0.175';'A0.200';'A0.225';'A0.250';'A0.275';'A0.300';'A0.325';'A0.350'];
+CopyPath  = ['G:' par 'NearWallCases' par 'FishNearPlants' par 'SourceData' par 'Re200Kf3.50D2.00H1.00L1.00Kp3.00F'];
+PastePath = ['G:' par 'NearWallCases' par 'FishNearPlants' par 'PostForces' par 'Re200Kf3.50D2.00H1.00L1.00Kp3.00F'];
+% FileList  = ['K0.25';'K0.50';'K0.75';'K1.00';'K1.50';'K2.00';'K2.50';'K3.00';'K3.50';'K4.00';'K4.50';'K5.00';'K6.00';'K7.00';'K10.0';'K15.0';'K30.0';'K50.0'];
+FileList  = ['F0.40';'F0.50';'F0.60';'F0.70';'F0.80';'F0.90';'F1.00';'F1.10'];
+% FileList  = ['D0.50';'D0.75';'D1.00';'D1.25';'D1.50';'D1.75';'D2.00'];
 %% Data Averaging Paremeters
-n_aver    = [1 1 1 1];
-num       = '01';   % the number of the soild
+n_aver    = [1 1 1 1];   % average times for velocity, power, force, energy
+num       = '01';        % the number of the plate
 %% Force Averaging Parameters
-Period1   = 13.50;
-Period2   = 14.50;
-Periodcon = pi/2;
-Period    = Periodcon * ones(1,size(FileList,1)) * 1.0;
-% Period = Periodcon * [0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4];
+Period1   = 10.00;
+Period2   = 20.00;
+Periodcon = 1/1.0;
+% Period    = Periodcon * ones(1,size(FileList,1)) * 1.0;
+Period = Periodcon ./ [0.4,0.5,0.6, 0.7, 0.8, 0.9, 1.0, 1.1];
 fprintf('Path And Parameter Set!\n');
 fprintf('*******************************************************************\n');

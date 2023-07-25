@@ -6,12 +6,12 @@ close all
 par = judgesystem();
 %% Define File Path
 % MkdirPath = [par 'home' par 'data' par 'xluo' par 'CylinderNearWall2'];
-MkdirPath =['H:' par 'ShearPlate' par 'VortexPlot'];
+MkdirPath =['G:' par 'NearWallCases' par 'FishNearPlants' par 'SourceData' par 'Re200L1.00D0.50H1.00F1.00K'];
 % FileList = ['K1.00';'K1.50';'K2.00';'K2.50';'K3.00';'K3.50';'K4.00';'K5.00';'K6.00';'K8.00';'K10.0'];
 % FileList = ['H1.00';'H1.25';'H1.50';'H1.75';'H2.00';'H2.50';'H3.00';'H5.00'];
-FileList = ('Re100A0.50Rho1.00S0.80K3.50');
+FileList = ('K5.00');
 %% Force Combanation Parameters
-Re = 100;        % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Re = 200;        % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 bodyType   =  3; % 0 closed body, 1 single plate, 2 two plates clamp
 isNearWall =  0; % 0 no, 1 yes
 %% Acceleration Information

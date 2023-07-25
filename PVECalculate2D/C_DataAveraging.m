@@ -29,19 +29,6 @@ for n=1:size(FileList,1)
     end
     PowerError = maxerror(Powerdata(:,3),NewPower(:,3));
     fprintf('Power        max error:%.6f percent\n',PowerError*100);
-%     % Averaging For Point Velocity
-%     PointPath0    = [CopyPath par FileList(n,:) par 'DatInfo'  par 'SampBodyNodeBegin_0002.plt' ];
-%     PointPath1    = [CopyPath par FileList(n,:) par 'DatInfoS' par 'SampBodyNodeBegin_0002.plt' ];
-%     Pointdata     = importdata(PointPath0).data;
-%     NewPoint0     = dataAveraging(Pointdata(:,2:end),n_aver(3));
-%     NewPoint      = [Pointdata(:,1) NewPoint0];
-%     file=fopen(PointPath1,'w');
-%     fprintf(file,' variables= "t"  "x"  "y"  "u"  "v"  "ax"  "ay"\n');
-%     for i=1:size(Pointdata,1)
-%         fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',NewPoint(i,1),NewPoint(i,2),NewPoint(i,3),NewPoint(i,4),NewPoint(i,5),NewPoint(i,6),NewPoint(i,7));
-%     end
-%     PointError = maxerror(Pointdata(:,5),NewPoint(:,5));
-%     fprintf('Point        max error:%.6f percent\n',PointError*100);
     % Averaging For Force
     ForcePath0    = [CopyPath par FileList(n,:) par 'DatInfo'  par 'ForceDirect_00' num '.plt' ];
     ForcePath1    = [CopyPath par FileList(n,:) par 'DatInfoS' par 'ForceDirect_00' num '.plt' ];
@@ -66,7 +53,7 @@ for n=1:size(FileList,1)
     for i=1:size(Energydata,1)
         fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',NewEnergy(i,1),NewEnergy(i,2),NewEnergy(i,3),NewEnergy(i,4),NewEnergy(i,5),NewEnergy(i,6),NewEnergy(i,7));
     end
-    EnergyError = maxerror(Energydata(:,4),NewEnergy(:,4));
+    EnergyError = maxerror(Energydata(:,7),NewEnergy(:,7));
     fprintf('Energy       max error:%.6f percent\n',EnergyError*100);
     fclose all;
     fprintf('%s Smooth Ready ============================================\n',FileList(n,:));

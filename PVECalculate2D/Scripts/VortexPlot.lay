@@ -1,0 +1,3334 @@
+#!MC 1410
+$!VarSet |LFDSFN1| = '"DatFlow\Flow0020.00000.plt"'
+$!VarSet |LFDSVL1| = '"x" "y" "p" "u" "v" "vort"'
+$!SetStyleBase Factory
+$!CreateColorMap 
+  Name = 'Sequential - Viridis'
+  NumControlPoints = 11
+  ControlPoint 1
+    {
+    ColorMapFraction = 0
+    LeadRGB
+      {
+      R = 68
+      G = 1
+      B = 84
+      }
+    TrailRGB
+      {
+      R = 68
+      G = 1
+      B = 84
+      }
+    }
+  ControlPoint 2
+    {
+    ColorMapFraction = 0.08163
+    LeadRGB
+      {
+      R = 72
+      G = 31
+      B = 112
+      }
+    TrailRGB
+      {
+      R = 72
+      G = 31
+      B = 112
+      }
+    }
+  ControlPoint 3
+    {
+    ColorMapFraction = 0.1837
+    LeadRGB
+      {
+      R = 67
+      G = 63
+      B = 133
+      }
+    TrailRGB
+      {
+      R = 67
+      G = 63
+      B = 133
+      }
+    }
+  ControlPoint 4
+    {
+    ColorMapFraction = 0.2857
+    LeadRGB
+      {
+      R = 54
+      G = 92
+      B = 141
+      }
+    TrailRGB
+      {
+      R = 54
+      G = 92
+      B = 141
+      }
+    }
+  ControlPoint 5
+    {
+    ColorMapFraction = 0.3878
+    LeadRGB
+      {
+      R = 43
+      G = 117
+      B = 142
+      }
+    TrailRGB
+      {
+      R = 43
+      G = 117
+      B = 142
+      }
+    }
+  ControlPoint 6
+    {
+    ColorMapFraction = 0.4898
+    LeadRGB
+      {
+      R = 33
+      G = 142
+      B = 141
+      }
+    TrailRGB
+      {
+      R = 33
+      G = 142
+      B = 141
+      }
+    }
+  ControlPoint 7
+    {
+    ColorMapFraction = 0.5918
+    LeadRGB
+      {
+      R = 33
+      G = 166
+      B = 133
+      }
+    TrailRGB
+      {
+      R = 33
+      G = 166
+      B = 133
+      }
+    }
+  ControlPoint 8
+    {
+    ColorMapFraction = 0.6939
+    LeadRGB
+      {
+      R = 64
+      G = 189
+      B = 114
+      }
+    TrailRGB
+      {
+      R = 64
+      G = 189
+      B = 114
+      }
+    }
+  ControlPoint 9
+    {
+    ColorMapFraction = 0.7959
+    LeadRGB
+      {
+      R = 119
+      G = 209
+      B = 83
+      }
+    TrailRGB
+      {
+      R = 119
+      G = 209
+      B = 83
+      }
+    }
+  ControlPoint 10
+    {
+    ColorMapFraction = 0.898
+    LeadRGB
+      {
+      R = 186
+      G = 222
+      B = 40
+      }
+    TrailRGB
+      {
+      R = 186
+      G = 222
+      B = 40
+      }
+    }
+  ControlPoint 11
+    {
+    ColorMapFraction = 1
+    LeadRGB
+      {
+      R = 253
+      G = 231
+      B = 37
+      }
+    TrailRGB
+      {
+      R = 253
+      G = 231
+      B = 37
+      }
+    }
+$!GlobalPaper 
+  PaperSizeInfo
+    {
+    Letter
+      {
+      Width = 8.5
+      Height = 11
+      LeftHardClipOffset = 0.125
+      RightHardClipOffset = 0.125
+      TopHardClipOffset = 0.125
+      BottomHardClipOffset = 0.125
+      }
+    }
+$!Page 
+  Name = 'Untitled'
+  PaperAttributes
+    {
+    BackgroundColor = White
+    IsTransparent = Yes
+    OrientPortrait = No
+    ShowGrid = Yes
+    ShowRuler = No
+    ShowPaper = No
+    PaperSize = Letter
+    RulerSpacing = OneInch
+    PaperGridSpacing = HalfInch
+    RegionInWorkArea
+      {
+      X1 = 1
+      Y1 = 0.25
+      X2 = 10
+      Y2 = 8.25
+      }
+    }
+### Frame Number 1 ###
+$!ReadDataSet  '|LFDSFN1|'
+  InitialPlotType = Cartesian2D
+  IncludeText = No
+  IncludeGeom = No
+  ResetStyle = No
+  AssignStrandIDs = Yes
+  VarLoadMode = ByName
+  VarNameList = '|LFDSVL1|'
+$!RemoveVar |LFDSVL1|
+$!RemoveVar |LFDSFN1|
+$!FrameLayout 
+  ShowBorder = No
+  ShowHeader = No
+  HeaderColor = Red
+  XYPos
+    {
+    X = 1
+    Y = 0.25
+    }
+  Width = 9
+  Height = 8
+$!ThreeDAxis 
+  AspectRatioLimit = 25
+  BoxAspectRatioLimit = 25
+$!PlotType  = Cartesian2D
+$!FrameName  = 'Frame 001'
+$!GlobalTime 
+  SolutionTime = 0
+$!ActiveFieldMaps  =  [1-143]
+$!GlobalRGB 
+  RedChannelVar = 3
+  GreenChannelVar = 3
+  BlueChannelVar = 3
+  RangeMin = 0
+  RangeMax = 1
+$!GlobalContour  1
+  Var = 6
+  ColorMapName = 'Diverging - Blue/Red'
+  DefNumLevels = 10
+  Legend
+    {
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorCutoff
+    {
+    RangeMin = -33.903336525
+    RangeMax = 20.3518190384
+    }
+  ColorMapFilter
+    {
+    ColorMapDistribution = Continuous
+    ContinuousColor
+      {
+      CMin = -3
+      CMax = 3
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 1
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  2
+  Var = 3
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 13
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 2
+  RawData
+13
+-4.5
+-4
+-3.5
+-3
+-2.5
+-2
+-1.5
+-1
+-0.5
+0
+0.5
+1
+1.5
+$!GlobalContour  3
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 3
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  4
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 4
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  5
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 5
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  6
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 6
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  7
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 7
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalContour  8
+  Var = 6
+  ColorMapName = 'Sequential - Viridis'
+  DefNumLevels = 10
+  Legend
+    {
+    Show = Yes
+    XYPos
+      {
+      X = 95
+      }
+    }
+  ColorMapFilter
+    {
+    ContinuousColor
+      {
+      CMin = 0
+      CMax = 1
+      }
+    }
+$!ContourLevels New
+  ContourGroup = 8
+  RawData
+10
+-50
+-40
+-30
+-20
+-10
+0
+10
+20
+30
+40
+$!GlobalScatter 
+  Legend
+    {
+    XYPos
+      {
+      X = 95
+      }
+    }
+  RefScatSymbol
+    {
+    Color = Red
+    FillColor = Red
+    }
+$!FieldMap  [1]
+  Mesh
+    {
+    Show = No
+    Color = Black
+    }
+  Contour
+    {
+    ContourType = Flood
+    Color = Black
+    UseLightingEffect = Yes
+    }
+  Vector
+    {
+    Color = Black
+    }
+  Scatter
+    {
+    Color = Black
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Black
+    LineThickness = 0.1
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    IRange
+      {
+      Max = 1
+      }
+    }
+  VolumeMode
+    {
+    VolumeObjectsToPlot
+      {
+      ShowIsosurfaces = No
+      ShowSlices = No
+      ShowStreamtraces = No
+      }
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!FieldMap  [2-73]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    ContourType = Flood
+    Color = Black
+    UseLightingEffect = Yes
+    }
+  Vector
+    {
+    Color = Black
+    }
+  Scatter
+    {
+    Color = Black
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = No
+    Color = Black
+    LineThickness = 0.1
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    IRange
+      {
+      Max = 1
+      }
+    }
+  VolumeMode
+    {
+    VolumeObjectsToPlot
+      {
+      ShowIsosurfaces = No
+      ShowSlices = No
+      ShowStreamtraces = No
+      }
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!FieldMap  [74]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [75]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [76]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [77]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [78]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [79]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [80]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [81]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [82]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [83]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [84]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [85]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [86]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [87]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [88]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [89]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [90]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [91]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [92]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [93]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [94]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [95]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [96]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [97]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [98]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [99]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [100]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [101]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [102]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [103]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [104]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [105]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [106]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [107]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [108]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [109]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [110]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [111]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [112]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [113]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [114]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [115]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [116]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [117]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [118]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [119]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [120]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [121]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [122]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [123]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [124]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [125]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [126]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [127]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [128]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [129]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [130]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [131]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [132]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [133]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [134]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [135]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [136]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [137]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [138]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Purple
+    }
+  Vector
+    {
+    Color = Purple
+    }
+  Scatter
+    {
+    Color = Purple
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Purple
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [139]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Red
+    }
+  Vector
+    {
+    Color = Red
+    }
+  Scatter
+    {
+    Color = Red
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Red
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [140]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Green
+    }
+  Vector
+    {
+    Color = Green
+    }
+  Scatter
+    {
+    Color = Green
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Green
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [141]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Blue
+    }
+  Vector
+    {
+    Color = Blue
+    }
+  Scatter
+    {
+    Color = Blue
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Blue
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [142]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Cyan
+    }
+  Vector
+    {
+    Color = Cyan
+    }
+  Scatter
+    {
+    Color = Cyan
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Cyan
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!FieldMap  [143]
+  Mesh
+    {
+    Color = Black
+    }
+  Contour
+    {
+    Color = Yellow
+    }
+  Vector
+    {
+    Color = Yellow
+    }
+  Scatter
+    {
+    Color = Yellow
+    }
+  Shade
+    {
+    Color = Custom2
+    }
+  EdgeLayer
+    {
+    Show = Yes
+    Color = Yellow
+    }
+  Points
+    {
+    PointsToPlot = SurfaceNodes
+    }
+  Surfaces
+    {
+    SurfacesToPlot = KPlanes
+    }
+$!TwoDAxis 
+  XDetail
+    {
+    VarNum = 1
+    }
+  YDetail
+    {
+    VarNum = 2
+    }
+$!View Fit
+$!TwoDAxis 
+  DepXToYRatio = 1
+  ViewportPosition
+    {
+    X1 = 0
+    Y1 = 40
+    X2 = 100
+    Y2 = 90
+    }
+  ViewportTopSnapTarget = 90
+$!TwoDAxis 
+  XDetail
+    {
+    RangeMin = -74.98000335693359375
+    RangeMax = 4.987996019411085058
+    GRSpacing = 5
+    Ticks
+      {
+      ShowOnAxisLine = No
+      }
+    TickLabel
+      {
+      ShowOnAxisLine = No
+      }
+    Title
+      {
+      ShowOnAxisLine = No
+      }
+    AxisLine
+      {
+      Show = No
+      }
+    }
+$!TwoDAxis 
+  YDetail
+    {
+    RangeMin = 0.019999999552965164185
+    RangeMax = 35.561333055706157324
+    GRSpacing = 5
+    Ticks
+      {
+      ShowOnAxisLine = No
+      }
+    TickLabel
+      {
+      ShowOnAxisLine = No
+      }
+    Title
+      {
+      ShowOnAxisLine = No
+      }
+    AxisLine
+      {
+      Show = No
+      }
+    }
+$!IsoSurfaceAttributes  1
+  IsoSurfaceSelection = OneSpecificValue
+  Isovalue1 = -33.903336525
+  Isovalue2 = -6.77575874329
+  Isovalue3 = 20.3518190384
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  2
+  DefinitionContourGroup = 2
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 2
+    FloodColoring = Group2
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  3
+  DefinitionContourGroup = 3
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 3
+    FloodColoring = Group3
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  4
+  DefinitionContourGroup = 4
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 4
+    FloodColoring = Group4
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  5
+  DefinitionContourGroup = 5
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 5
+    FloodColoring = Group5
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  6
+  DefinitionContourGroup = 6
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 6
+    FloodColoring = Group6
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  7
+  DefinitionContourGroup = 7
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 7
+    FloodColoring = Group7
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!IsoSurfaceAttributes  8
+  DefinitionContourGroup = 8
+  IsoSurfaceSelection = OneSpecificValue
+  Contour
+    {
+    LineContourGroup = 8
+    FloodColoring = Group8
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    }
+$!SliceAttributes  1
+  PrimaryPosition
+    {
+    X = 0
+    Y = 0
+    Z = 0
+    I = 1
+    J = 1
+    K = 1
+    }
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+  SliceConstraint
+    {
+    Include = No
+    Origin
+      {
+      X = 0
+      Y = 0
+      Z = 0
+      }
+    BoxDimension
+      {
+      X = 0
+      Y = 0
+      Z = 0
+      }
+    }
+$!SliceAttributes  2
+  SliceSurface = YPlanes
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  3
+  SliceSurface = ZPlanes
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  4
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  5
+  SliceSurface = YPlanes
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  6
+  SliceSurface = ZPlanes
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  7
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!SliceAttributes  8
+  SliceSurface = YPlanes
+  EdgeLayer
+    {
+    Show = No
+    }
+  Effects
+    {
+    LightingEffect = Gouraud
+    SurfaceTranslucency = 10
+    }
+$!StreamAttributes 
+  StreamTiming
+    {
+    MarkSize = 1
+    MarkSymbol
+      {
+      GeomShape = Sphere
+      }
+    }
+  RodRibbon
+    {
+    Effects
+      {
+      LightingEffect = Gouraud
+      }
+    }
+  MaxSteps = 10000
+$!FieldLayers 
+  ShowContour = Yes
+  ShowShade = Yes
+  ShowEdge = No
+$!StreamtraceLayers 
+  Show = No
+$!SetAuxData 
+  AuxDataLocation = Frame
+  Name = 'CFDA.INTEGRATION_TOTAL'
+  ValueString = '2.59663266754841'
+$!FrameControl ActivateByNumber
+  Frame = 1
+$!SetStyleBase Config

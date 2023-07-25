@@ -1,6 +1,6 @@
 #!MC 1410
 $!VarSet |LFDSFN1| = '"PUESY.dat"'
-$!VarSet |LFDSVL1| = '"A" "P_Avearage" "U_Avearage" "Efficiency" "StressEnergy" "yPlacement"'
+$!VarSet |LFDSVL1| = '"K" "P_Avearage" "U_Avearage" "Efficiency" "StressEnergy" "yPlacement"'
 $!SetStyleBase Factory
 $!GlobalPaper 
   PaperSizeInfo

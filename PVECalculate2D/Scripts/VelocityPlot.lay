@@ -48,9 +48,8 @@ $!ReadDataSet  '|LFDSFN1|'
 $!RemoveVar |LFDSVL1|
 $!RemoveVar |LFDSFN1|
 $!AlterData 
+  IgnoreDivideByZero = Yes
   Equation = '{u}=-{u}'
-$!AlterData 
-  Equation = '{t}={t}/3.1415926*2'
 $!FrameLayout 
   ShowBorder = No
   ShowHeader = No
@@ -78,10 +77,11 @@ $!GlobalLinePlot
     }
   Legend
     {
+    Show = Yes
     TextShape
       {
       SizeUnits = Point
-      Height = 15.28
+      Height = 20
       }
     Box
       {
@@ -89,12 +89,12 @@ $!GlobalLinePlot
       }
     XYPos
       {
-      X = 86.999
-      Y = 80.334
+      X = 83.618
+      Y = 77.762
       }
     }
 $!LineMap  [1]
-  Name = 'Wt=0.10'
+  Name = '<times>Velocity'
   Assign
     {
     Zone = 1
@@ -103,8 +103,8 @@ $!LineMap  [1]
     }
   Lines
     {
-    Color = Red
-    LineThickness = 0.3
+    Color = Black
+    LineThickness = 0.4
     }
   Symbols
     {
@@ -146,7 +146,29 @@ $!XYLineAxis
   XDetail 1
     {
     RangeMin = 0
-    RangeMax = 15
+    RangeMax = 20
+    AutoGrid = No
+    GRSpacing = 2
+    TickLabel
+      {
+      TextShape
+        {
+        IsBold = Yes
+        Height = 4
+        }
+      }
+    Title
+      {
+      TitleMode = UseText
+      Text = '<times><i>t/T'
+      Offset = 5
+      }
+    }
+$!XYLineAxis 
+  YDetail 1
+    {
+    RangeMin = 0
+    RangeMax = 3
     AutoGrid = No
     GRSpacing = 1
     TickLabel
@@ -160,29 +182,7 @@ $!XYLineAxis
     Title
       {
       TitleMode = UseText
-      Text = 't/T'
-      Offset = 5
-      }
-    }
-$!XYLineAxis 
-  YDetail 1
-    {
-    RangeMin = 0
-    RangeMax = 3
-    GRSpacing = 0.5
-    TickLabel
-      {
-      TextShape
-        {
-        IsBold = Yes
-        Height = 4
-        }
-      }
-    Title
-      {
-      TitleMode = UseText
-      Text = 'U<sub>c</sub>/U<sub>ref</sub>'
-      Offset = 7
+      Text = '<times><i>U<sub>c</sub> / U<sub>ref</sub>'
       }
     }
 $!LinePlotLayers 
@@ -190,7 +190,7 @@ $!LinePlotLayers
 $!SetAuxData 
   AuxDataLocation = Frame
   Name = 'CFDA.INTEGRATION_TOTAL'
-  ValueString = '1.44888938687108'
+  ValueString = '1.91941581345806'
 $!FrameControl ActivateByNumber
   Frame = 1
 $!SetStyleBase Config

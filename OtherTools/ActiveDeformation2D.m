@@ -17,7 +17,7 @@ for j=1:length(t)
         y0(i)  = h*(2.969 * sqrt(nx) - 1.260 * nx - 3.516 * nx^2 + 2.843 * nx^3 - 1.036 * nx^4);
         dy(i)  = h*(0.20-0.80*nx+1.60*nx^2)*cos(2*pi*(x(i)-t(j)));
         y1(j,i) = dy(i) + y0(i);
-        y2(j,i) = dy(i) - y0(i);
+        y2(j,i) = dy(i) - y0(i); 
     end
 end
 x1 = [x(1:1:len) x(len-1:-1:1)];

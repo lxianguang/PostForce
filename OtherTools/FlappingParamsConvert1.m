@@ -1,10 +1,9 @@
-%% targeting dimensionless parameters
+%% targeting dimensionless parameters (Tref = Lref/Uref, the real period is fixed)
 clc
 clear
 format long
-PeriodLen = 1.0;
-Periodnum = 20.0;
-Shear     = 0.80;       % dimensionless shear rate
+Periodnum = 30.0;
+Shear     = 0.00;       % dimensionless shear rate
 Amp       = 0.25;       % amplitude (half peak-to-peak value)
 dtreal    = 1/10000;     % dimensionless time step by period
 doutFlow  = 1/8;        % flow field output time interval per period
@@ -17,14 +16,14 @@ Lreal     = 1.000;      % plate length
 Tref      = dx    / dtreal;
 Uref      = Lreal / Tref;
 freq      = Uref  / (2 * pi * Amp);
-period    = 1/freq/Tref;
+period    = (1/freq)/Tref;
 ShearReal = Shear * Uref / (2 * Amp);
 outflow   = doutFlow * period; % outflow / Tref
 outInfo   = doutInfo * period; % outflow / Tref
 %% print parameters
-fprintf('Total Calculate Time:  %.12f\n',Periodnum * PeriodLen * period)
+fprintf('Total Calculate Time:  %.12f\n',Periodnum * period)
 fprintf('Real Shear Rate:       %.13f\n',ShearReal)
 fprintf('Flapping Frequency:    %.13f\n',freq)
-fprintf('One Period Length:     %.13f\n',period  * PeriodLen)
-fprintf('Flow write interval:   %.13f\n',outflow * PeriodLen)
-fprintf('Data write interval:   %.13f\n',outInfo * PeriodLen)
+fprintf('One Period Length:     %.13f\n',period )
+fprintf('Flow write interval:   %.13f\n',outflow)
+fprintf('Data write interval:   %.13f\n',outInfo)
