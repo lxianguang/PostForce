@@ -3,7 +3,7 @@ clear
 run A_DefineFilePath.m
 %% parameters
 for nfile=1:size(FileList,1)
-    lines     = getFileLines([CopyPath par FileList(nfile,:) par 'DatInfo' par 'Energy_0002.plt']);
+    lines     = GetFileLines([CopyPath par FileList(nfile,:) par 'DatInfo' par 'Energy_0002.plt']);
     energysum = zeros(lines-1,7);
     energynum = zeros(lines-1,7);
     subdir    = dir([CopyPath par FileList(nfile,:) par 'DatInfo']);

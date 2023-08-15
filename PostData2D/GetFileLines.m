@@ -1,4 +1,4 @@
-function [lines] = getFileLines(path)
+function [lines] = GetFileLines(path)
 lines = 0;
 file = fopen(path,'r+');
 while ~feof(file)
