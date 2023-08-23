@@ -1,10 +1,10 @@
 %% Copy data files to post force folder
 run A_ParameterSet.m
-CreatFolder([PastePath par 'Power'    ])   
-CreatFolder([PastePath par 'Energy'   ])
-CreatFolder([PastePath par 'Velocity' ])
-CreatFolder([PastePath par 'Result'   ])
-CreatFolder([PastePath par 'Force'    ])
+CreatFolder([PastePath par 'Power'   ])   
+CreatFolder([PastePath par 'Energy'  ])
+CreatFolder([PastePath par 'Velocity'])
+CreatFolder([PastePath par 'Result'  ])
+CreatFolder([PastePath par 'Force'   ])
 for k=1:size(FileList,1)
     startfile1 = [CopyPath par FileList(k,:) par 'DatInfoS' par 'Power_00'        num '.plt'];
     startfile2 = [CopyPath par FileList(k,:) par 'DatInfoS' par 'SampBodyMean_00' num '.plt'];

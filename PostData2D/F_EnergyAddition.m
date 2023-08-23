@@ -1,16 +1,13 @@
-clc
-clear
-run A_DefineFilePath.m
-%% parameters
+run A_ParameterSet.m
 for nfile=1:size(FileList,1)
-    lines     = GetFileLines([CopyPath par FileList(nfile,:) par 'DatInfo' par 'Energy_0002.plt']);
-    energysum = zeros(lines-1,7);
-    energynum = zeros(lines-1,7);
     subdir    = dir([CopyPath par FileList(nfile,:) par 'DatInfo']);
-    filenum   = size(subdir,1)-6;
+    filenum   = GetFileNumber(subdir,'Energy_');
+    energysum = zeros(100000,7);
+    energynum = zeros(100000,7);
     for num=2:filenum
-        filename = getname(num);
+        filename = GetFileName('Energy',num);
         filepath = [CopyPath par FileList(nfile,:) par 'DatInfo' par filename];
+        lines    = GetFileLines(filepath);
         file     = fopen(filepath);
         str      = fgetl(file);
         for line = 1:lines-1
@@ -21,7 +18,7 @@ for nfile=1:size(FileList,1)
         error = find(energynum<=-100);
         energynum(error) = 0.0;
         energysum(:,2:7) = energysum(:,2:7) + energynum(:,2:7);
-        fprintf('File Number:%d\n',num);
+        fprintf('File Number(%s):%d\n',FileList(nfile,:),num);
     end
     %energysum(:,2:7) = energysum(:,2:7)/(filenum - 1);
     energysum(:,1)   = energysum(:,1) + energynum(:,1);
@@ -36,14 +33,4 @@ for nfile=1:size(FileList,1)
     fclose all;
     %% plot 
     plot(energysum(:,1),energysum(:,4))
-end
-%% function
-function [filename] = getname(n)
-if n<10
-    filename = ['Energy_000' num2str(n) '.plt'];
-elseif n<100
-    filename = ['Energy_00'  num2str(n) '.plt'];
-else
-    filename = ['Energy_0'   num2str(n) '.plt'];
-end
 end

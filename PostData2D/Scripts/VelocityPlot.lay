@@ -277,7 +277,7 @@ $!XYLineAxis
     Title
       {
       TitleMode = UseText
-      Text = '<times><i>t / H</i></times>'
+      Text = '<times><i>t / T</i></times>'
       TextShape
         {
         FontFamily = 'Times New Roman'
