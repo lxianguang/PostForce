@@ -1,4 +1,4 @@
-run A_ParameterSet.m
+ run A_ParameterSet.m
 outputnum = 1000;
 for nfile=1:size(FileList,1)
     filepath  = [CopyPath par FileList(nfile,:) par 'DatInfo'];

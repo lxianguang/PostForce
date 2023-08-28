@@ -1,7 +1,7 @@
 run A_ParameterSet.m
 %% parameters
 startnum = 15000;
-lastnum  = 25000;
+lastnum  = 20000;
 average  = zeros(size(FileList,1),4);
 for nfile=1:size(FileList,1)
     filepath = [CopyPath par FileList(nfile,:) par 'DatInfo' par 'EnergySum.dat'];

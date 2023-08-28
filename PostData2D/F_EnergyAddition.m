@@ -31,6 +31,4 @@ for nfile=1:size(FileList,1)
         fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',energysum(i,1),energysum(i,2),energysum(i,3),energysum(i,4),energysum(i,5),energysum(i,7));
     end
     fclose all;
-    %% plot 
-    plot(energysum(:,1),energysum(:,4))
 end

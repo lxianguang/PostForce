@@ -5,7 +5,7 @@ for nfile=1:size(FileList,1)
     subdir    = dir(filepath);
     filenum   = GetFileNumber(subdir,'Energy_');
     energysum = zeros(filenum-1,outputnum+1);
-    energynum = zeros(100000,7);
+    energynum = zeros(100000,7); 
     for num=2:filenum
         filename = GetFileName('Energy',num);
         lines    = GetFileLines([filepath par filename]);
@@ -30,7 +30,7 @@ for nfile=1:size(FileList,1)
     %% write data
     CreatFolder([filepath par 'EnergyArrange']);
     % write average files
-    writefile = [filepath par 'EnergyArrange' par 'EnergyAverage.dat'];
+    writefile = [filepath par 'EnergyArrange' par 'EnergyArrange.dat'];
     file      = fopen(writefile,'w');
     fprintf(file,'VARIABLES=\"n\",\"Et\"\n');
     for i=1:filenum-1
