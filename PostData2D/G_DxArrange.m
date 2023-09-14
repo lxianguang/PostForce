@@ -1,4 +1,4 @@
- run A_ParameterSet.m
+run A_ParameterSet.m
 outputnum = 1000;
 for nfile=1:size(FileList,1)
     filepath  = [CopyPath par FileList(nfile,:) par 'DatInfo'];
@@ -24,7 +24,7 @@ for nfile=1:size(FileList,1)
         end
         fprintf('File Number(%s):%d\n',FileList(nfile,:),num);
     end
-    fprintf('%s Energy arrange Ready ====================================\n',FileList(nfile,:));
+    fprintf('%s Displacement arrange Ready ==============================\n',FileList(nfile,:));
     %% write data
     CreatFolder([filepath par 'Displacement']);
     % write average files
