@@ -1,6 +1,5 @@
 %% Define Parameters
 format long
-run A_ParamtersDefine.m
 run FileAndFolderSet.m
 if bodyType
     run SmoothAcceleration.m

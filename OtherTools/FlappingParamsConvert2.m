@@ -3,14 +3,14 @@ clc
 clear
 format long
 PeriodNum = 30.0;
-freq      = 0.010;
+freq      = 0.01;
 Shear     = 0.00;            % dimensionless shear rate
 Amp       = 0.25;            % amplitude (half peak-to-peak value)
-dtReal    = 6.25e-5;            % Real time in a step
+dtReal    = 1e-4;            % Real time in a step
 doutFlow  = 1/8;             % flow field output time interval per period
 doutInfo  = doutFlow/125;    % flow infomation output time interval per period
 %% values with dimension
-dx        = 6.25e-3;         % mesh size, dx = dt
+dx        = 0.020;           % mesh size, dx = dt
 Lreal     = 1.000;           % plate length
 %% parameters with dimension (used in the input file)
 %% for reference velocity 11, U_ref is the maximum plunging velocity

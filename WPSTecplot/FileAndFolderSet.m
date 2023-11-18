@@ -1,4 +1,5 @@
 %% File Parameters
+run A_ParamtersDefine.m
 filenames = [];
 for k=1:size(FileList,1)
     %% Creat Folders
