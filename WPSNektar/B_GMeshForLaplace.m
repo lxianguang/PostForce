@@ -1,21 +1,21 @@
 %% Define Parameters
 format long
 run A_ParamtersDefine.m
-run FileAndFolderSet.m
-run SmoothAcceleration.m
+fileAndFolderSet(MkdirPath, par, FileList, isNearWall)
 % domian size
-halfheight = 0.02;
+halfheight = 0.02;  % two mesh length
 walldx     = 0.01;
 wallY      = 0.00;
-sidelen    = [2.00, 8.00, 3.00, 3.00]; % Range based on the head point(left,right,down,upper length)
+sidelen    = [2.00, 8.00, 2.50, 2.50]; % Range based on the head point(left,right,down,upper length)
 % outer grid space
 boundarydx = [0.10, 0.10, 0.10, 0.10]; % down, right, upper, left boundary(outer)
-louter     = [0.06, 0.10, 0.06, 0.10]; % down, right, upper, left boundary(outer)
+louter     = [0.06, 0.10, 0.06, 0.06]; % down, right, upper, left boundary(outer)
 % inner mesh size
 linner     = 0.10 ; 
+% =============================================================================
 for kk=1:size(FileList,1)
     FilePath = [MkdirPath par FileList(kk,:)];
-    subdir=dir([FilePath par 'DatBodyS']);
+    subdir=dir([FilePath par 'DatBody']);
     subdir(1:2) = [];
     %% Change Laplace Solve Parameters
     copyfile(['.' par 'Scripts' par 'Universal' par 'LaplaceSolve.sh'] ,[FilePath par 'DatGeo' par 'LaplaceSolve.sh']);
@@ -23,7 +23,7 @@ for kk=1:size(FileList,1)
     for num=1:size(subdir,1)
        %% Load Plate Data
         filename = subdir(num).name;
-        readfile = [FilePath par 'DatBodyS' par filename];
+        readfile = [FilePath par 'DatBody' par filename];
         data     = importdata(readfile).data;
         coor     = [data(:,1) data(:,2) data(:,5) data(:,6)]; % x, y, ax, ay
         % get the figure outline of flapping plate

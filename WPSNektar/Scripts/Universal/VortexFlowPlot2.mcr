@@ -88,7 +88,9 @@ $!SetContourVar
 $!FieldLayers ShowContour = Yes
 $!View Fit
   ConsiderBlanking = Yes
-$!ExportSetup ExportFName = '|PATH|/Result/6PictureView/Vortex|out|.png'
+$!ExportSetup ExportFormat = TIFF
+$!ExportSetup ImageWidth = 1920
+$!ExportSetup ExportFName = '|PATH|\DatFigures\Vortex|out|.tiff'
 $!Export 
   ExportRegion = AllFrames
 

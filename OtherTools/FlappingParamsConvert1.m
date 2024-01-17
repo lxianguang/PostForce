@@ -5,18 +5,18 @@ format long
 Periodnum = 20.0;
 Shear     = 0.00;       % dimensionless shear rate
 Amp       = 0.25;       % amplitude (half peak-to-peak value)
-dtreal    = 1/2000;    % dimensionless time step by period
+dtreal    = 1/10000;    % dimensionless time step by period
 doutFlow  = 1/8;        % flow field output time interval per period
 doutInfo  = doutFlow/128;    % flow infomation output time interval per period
 %% values with dimension
-dx        = 0.025;      % mesh size
+dx        = 0.010;      % mesh size
 Lreal     = 1.000;      % plate length
 %% parameters with dimension (used in the input file)
 %% for reference velocity 11, U_ref is the maximum plunging velocity
 Tref      = dx    / dtreal;
 Uref      = Lreal / Tref;
 freq      = Uref  / (2 * pi * Amp);
-period    = (1/freq)/Tref;
+period    = (1/freq)/Tref;     % 2*pi*A
 ShearReal = Shear * Uref / (2 * Amp);
 outflow   = doutFlow * period; % outflow / Tref
 outInfo   = doutInfo * period; % outflow / Tref

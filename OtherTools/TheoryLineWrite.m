@@ -1,26 +1,27 @@
 clear
 clc
-%% Out Put Contour Line Of StA
-% Kn = 0.27;
-% St = (0.00:0.001:0.40);
-% AD = Kn./St;
-%% Poiseuille Velocity Profile
-umax = 0.01;
-width = 64.5;
-St = (-width:1:width);
-AD = -umax*(St+width).*(St-width)/width/width;
+%% Abscissa Set
+x = (0:0.001:1);
+%% Ordinate Calculation
+y = zeros(1,length(x));
+for i=1:length(x)
+    y(i) = theory(x(i));
+end
 %% Write Data
-len= length(St);
-filename = '.\Scripts\StContourLine.dat';
+filename = '.\Scripts\Test.dat';
 file=fopen(filename,'w');
-fprintf(file,'VARIABLES="StD","AD"\n');
-for i=1:len
-    fprintf(file,'%10f    %10f\n',St(i),AD(i));
+fprintf(file,'VARIABLES="x","y"\n');
+for i=1:length(x)
+    fprintf(file,'%10f    %10f\n',x(i),y(i));
 end
 fclose all;
 %% Plot
 figure;
-plot(St, AD, '.r-')
-%axis([0.00 0.30  0 2.0])
-pause(1.0)
-close all
+plot(x, y, '.r-')
+xlim([x(1) x(end)])
+axis equal
+%% theory line function
+function y = theory(x)
+h = 0.20;
+y = h/0.2*(0.2969*sqrt(x)-0.1260*x-0.3516*x^2+0.2843*x^3-0.1015*x^4);
+end

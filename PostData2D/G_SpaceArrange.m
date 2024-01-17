@@ -20,7 +20,8 @@ for nfile=1:size(FileList,1)
         outputstep = fix((lines-1)/outputnum);
         displacementsum(orderset,1) = orderset;
         for n=2:outputnum+1
-            displacementsum(orderset,n) = abs(displacementnum((n-2)*outputstep+1,2)-displacementnum(1,2));
+            %displacementsum(orderset,n) = abs(displacementnum((n-2)*outputstep+1,2)-displacementnum(1,2));
+            displacementsum(orderset,n) = displacementnum((n-2)*outputstep+1,2)-displacementnum(1,2);
         end
         fprintf('File Number(%s):%d\n',FileList(nfile,:),num);
     end

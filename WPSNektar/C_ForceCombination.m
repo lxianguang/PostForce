@@ -3,7 +3,7 @@ run A_ParamtersDefine.m
 for k=1:size(FileList,1)
     FilePath = [MkdirPath par FileList(k,:)];
     %% Reading Time
-    subdir      = dir([FilePath par 'DatBodyS']);
+    subdir      = dir([FilePath par 'DatBody']);
     subdir(1:2) = [];
     numlen      = size (subdir,1);
     datatime    = zeros(numlen,1);
@@ -22,7 +22,7 @@ for k=1:size(FileList,1)
     end
     force0    = importdata(maindir0).data;
     forcex    = interp1(force0(:,1),force0(:,2),datatime,'spline');
-%    forcey    = interp1(force0(:,1),force0(:,3),datatime,'spline');
+    forcey    = interp1(force0(:,1),force0(:,3),datatime,'spline');
     %% Extract Forces
     ForceFile = [FilePath par 'forceLog.txt'];
     Forces    = zeros(numlen,6);
@@ -43,19 +43,19 @@ for k=1:size(FileList,1)
     end
     %% Write Data
     % Force in x-direction
-    writeforce = [FilePath par 'ForceX.dat' ];
+    writeforce = [FilePath par 'ForceX.dat'];
     file=fopen(writeforce,'w');
     fprintf(file,'VARIABLES=\"T\",\"VortexFx\",\"FrictionFx\",\"AccelerationFx\",\"VicpreFx\",\"ResultantFx\",\"TrueResFx\"\n');
     for i=2:numlen
         fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',datatime(i),Forces(i,1),Forces(i,2),Forces(i,3),Forces(i,4),Forces(i,5),Forces(i,6));
     end
-%     % Force in y-direction
-%     writeforce = [FilePath par 'ForceY.dat' ];
-%     file=fopen(writeforce,'w');
-%     fprintf(file,'VARIABLES=\"T\",\"AccelerationFy\",\"FrictionFy\",\"VicpreFy\",\"VortexFy\",\"ResultantFy\",\"TrueResFy\"\n');
-%     for i=1:numlen
-%         fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',datatime(i),AccelerationForce(i,2),VicousForce(i,2),VicPreForce(i,2),VortexForce(i,2),ResultantForce(i,2),TrueResultant(i,2));
-%     end
+    % Force in y-direction
+    writeforce = [FilePath par 'ForceY.dat' ];
+    file=fopen(writeforce,'w');
+    fprintf(file,'VARIABLES=\"T\",\"AccelerationFy\",\"FrictionFy\",\"VicpreFy\",\"VortexFy\",\"ResultantFy\",\"TrueResFy\"\n');
+    for i=1:numlen
+        fprintf(file,'%.6f    %.6f    %.6f    %.6f    %.6f    %.6f    %.6f\n',datatime(i),AccelerationForce(i,2),VicousForce(i,2),VicPreForce(i,2),VortexForce(i,2),ResultantForce(i,2),TrueResultant(i,2));
+    end
     fclose all;
     fprintf('%s Combination End =========================================\n',FileList(k,:));
 end
