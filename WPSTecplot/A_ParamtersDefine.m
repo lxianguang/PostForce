@@ -10,7 +10,7 @@ FileList = ('K5St0.6Al0.2psi270');
 % FileList = ['H1.00';'H1.25';'H1.50';'H1.75';'H2.00';'H2.50';'H3.00';'H5.00'];
 %% Force Combanation Parameters
 Re = 200;        % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-bodyType   =  3; % 0 closed body, 1 single plate, 2 two plates clamp
+bodyType   =  1; % 0 closed body, 1 single plate, 2 two plates clamp
 isNearWall =  0; % 0 no, 1 yes
 %% Acceleration Information
 Amp = [0.25 0.00];

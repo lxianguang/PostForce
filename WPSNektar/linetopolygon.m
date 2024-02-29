@@ -6,7 +6,7 @@ dL = sqrt((data(1,1)-data(2,1))^2+(data(1,2)-data(2,2))^2);
 if type==0
     %% closed body
     len   = size(data,1)-1;
-    data = data(1:len,:);
+    data  = data(1:len,:);
     
     verts = data(:,1) + data(:,2)*1i;
     dnorm = normalvector(verts);
@@ -17,7 +17,7 @@ if type==0
     index     = (1:1:len);
     npoints   = size(coor,1);
 elseif type==1
-    % single plate for rectangle boudary 
+    %% single plate for rectangle boudary 
     len   = size(data,1) ;
     verts = data(:,1) + data(:,2) * 1i;
     dnorm = normalvector(verts);
