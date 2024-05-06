@@ -1,6 +1,4 @@
-clear
-clc
-close all
+clear;clc;close all
 %% Parameters
 x  = (0:0.01:1);
 t  = (0:0.01:1);

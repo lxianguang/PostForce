@@ -1,5 +1,4 @@
-clc
-clear
+clear;clc;close all
 %% parameters
 l = 250;
 h = 0.1*l;

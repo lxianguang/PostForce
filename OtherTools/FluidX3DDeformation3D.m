@@ -1,5 +1,4 @@
-clc
-clear
+clear;clc;close all
 %% parameters
 l = 300;         % length
 h = 0.06*l;      % height kind 1
