@@ -2,9 +2,9 @@ clear;clc;close all;fclose all;
 %% Set Separator According To Different Systems
 par = JudgeSystem();
 %% Define File Path
-CopyPath  = ['G:' par 'NearWallCases' par 'FishNearPlants2D' par 'SourceData' par 'Part3_1' par 'Re200Kf3.50D0.25H1.00L1.00Kp3.00F'];
-PastePath = ['G:' par 'NearWallCases' par 'FishNearPlants2D' par 'PostData'   par 'Part3_1' par 'Re200Kf3.50D0.25H1.00L1.00Kp3.00F'];
-FileList  = ['F0.80'];
+CopyPath  = ['G:' par 'NearWallCases' par 'FishNearPlants2D' par 'SourceData'         par 'Part1_1' par 'Re200Kf3.50D0.00L1.00Kp3.00F1.00H'];
+PastePath = ['G:' par 'NearWallCases' par 'FishNearPlants2D' par 'DataPostProcessing' par 'Part1_1' par 'Re200Kf3.50D0.00L1.00Kp3.00F1.00H'];
+FileList  = ['H1.00';'H1.25''H1.75'];
 %% Data Smoothing Paremeters
 n_aver    = [1 1 1 1];   % average times for velocity, power, force, energy
 num       = '01';        % the number of the plate

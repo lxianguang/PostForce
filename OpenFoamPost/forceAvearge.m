@@ -1,15 +1,15 @@
 clear;clc;close all
 %% Parameters
-fileName  = ['AoA15Alpha00F1.00-v';'AoA15Alpha02F1.00-v';'AoA15Alpha04F1.00-v';'AoA15Alpha06F1.00-v';'AoA15Alpha08F1.00-v'];
-filePath  = 'G:\OpenFOAM-v2306\dynamicMesh\infiniteMovingWing\CaseAoA15PitchingRe2000\';
+fileName  = ['Case0';'Case1';'Case2';'Case3'];
+filePath  = 'G:\OpenFOAM-v2306\dynamicMesh\infiniteMovingWing\CasesConvergence\';
 fileNum   = size(fileName,1);
-forceRef  = 0.5 * 1000 * 5;   % F_ref = 0.5 * rho * Sref
-beginTime = 5.0;              % the start time for average
+forceRef  = 0.5 * 1000 * 0.9; % F_ref = 0.5 * rho * Sref
+beginTime = 15.0;              % the start time for average
 %% Averaging
 meanDrag  = zeros(fileNum,3);
 meanLift  = zeros(fileNum,3);
 for i=1:fileNum
-    forceData = importdata([filePath fileName(i,:) '\postProcessing\forcesWing\0\force.dat']).data;
+    forceData = importdata([filePath fileName(i,:) '\postProcessing\forcesCylinder\0\force.dat']).data;
     forceTime = forceData(:,1);
 
     % get last five period
@@ -30,17 +30,17 @@ for i=1:fileNum
 end
 %% Write Data
 %  drag
-filename = [filePath 'PostProcessing\averageDrag-v.dat'];
+filename = [filePath 'PostProcessing\averageDrag.dat'];
 file     = fopen(filename,'w');
-fprintf(file,'VARIABLES="AoA","f_t","f_p","f_v"\n');
+fprintf(file,'VARIABLES="Case","f_t","f_p","f_v"\n');
 for i=1:fileNum
-    fprintf(file,'%6f    %6f    %6f    %6f\n',str2num(fileName(i,11:12)),meanDrag(i,1),meanDrag(i,2),meanDrag(i,3));
+    fprintf(file,'%6f    %6f    %6f    %6f\n',str2num(fileName(i,5)),meanDrag(i,1),meanDrag(i,2),meanDrag(i,3));
 end
 %  lift
-filename = [filePath 'PostProcessing\averageLift-v.dat'];
+filename = [filePath 'PostProcessing\averageLift.dat'];
 file     = fopen(filename,'w');
-fprintf(file,'VARIABLES="AoA","f_t","f_p","f_v"\n');
+fprintf(file,'VARIABLES="Case","f_t","f_p","f_v"\n');
 for i=1:fileNum
-    fprintf(file,'%6f    %6f    %6f    %6f\n',str2num(fileName(i,11:12)),meanLift(i,1),meanLift(i,2),meanLift(i,3));
+    fprintf(file,'%6f    %6f    %6f    %6f\n',str2num(fileName(i,5)),meanLift(i,1),meanLift(i,2),meanLift(i,3));
 end
 fclose all;
