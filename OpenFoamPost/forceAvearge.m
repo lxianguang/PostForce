@@ -1,15 +1,16 @@
 clear;clc;close all
 %% Parameters
-fileName  = ['Case0';'Case1';'Case2';'Case3'];
-filePath  = 'G:\OpenFOAM-v2306\dynamicMesh\infiniteMovingWing\CasesConvergence\';
+fileName  = ['F0.50';'F0.60';'F0.70';'F0.80';'F0.90';'F1.00'];
+filePath  = 'I:\FishNearFlexibleGround\SourceData\Re200Kf3.50L1.00Kp3.00D0.50HF\Re200Kf3.50L1.00Kp3.00D0.00H10.0F\';
 fileNum   = size(fileName,1);
-forceRef  = 0.5 * 1000 * 0.9; % F_ref = 0.5 * rho * Sref
+forceRef  = 0.5 * 1000 * 0.9;  % F_ref = 0.5 * rho * Sref
 beginTime = 15.0;              % the start time for average
+endTime   = 30.0;              % the start time for average
 %% Averaging
-meanDrag  = zeros(fileNum,3);
-meanLift  = zeros(fileNum,3);
+st_c = zeros(fileNum,1);
+st_f = zeros(fileNum,1);
 for i=1:fileNum
-    forceData = importdata([filePath fileName(i,:) '\postProcessing\forcesCylinder\0\force.dat']).data;
+    forceData = importdata([filePath fileName(i,:) '\DatInfo\SampBodyMean_0001.plt']).data;
     forceTime = forceData(:,1);
 
     % get last five period
