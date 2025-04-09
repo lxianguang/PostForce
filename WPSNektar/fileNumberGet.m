@@ -1,4 +1,4 @@
-function [file1,file2] = filenameget(num,name1,name2,suffix)
+function [file1,file2] = fileNumberGet(num,name1,name2,suffix)
 if num<10
     file1 = [name1 '00' num2str(num)  suffix];
     file2 = [name2 '00' num2str(num)  suffix];
