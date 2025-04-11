@@ -5,7 +5,7 @@
     </EXPANSIONS>
     <CONDITIONS>
         <SOLVERINFO>
-            <I PROPERTY="EQTYPE"                        VALUE="Laplace"     />
+            <I PROPERTY="EQTYPE"                        VALUE="LaplacePhi"     />
             <I PROPERTY="Projection"                    VALUE="Continuous"                 />
             <I PROPERTY="GlobalSysSoln"                 VALUE="XxtMultiLevelStaticCond"  />
         </SOLVERINFO>

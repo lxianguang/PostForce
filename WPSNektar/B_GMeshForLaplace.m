@@ -144,7 +144,7 @@ for num=1:size(subdir,1)
     npointx = sum(sideLen(1:2))/halfheight*2 + 1;
     npointy = sum(sideLen(3:4))/halfheight*2 + 1;
     scope   = [num2str(npointx) ',' num2str(npointy) ',' num2str(xmin) ',' num2str(ymin) ',0' ',' num2str(xmax) ',' num2str(ymax) ',0'];
-    content = ['mpirun -np 64 FieldConvert -m interppoints:box=' scope ':fromxml=Mesh&.xml,LaplaceSet.xml:fromfld=Mesh&.fld PhiVortex&.plt -f >> log.txt'];
+    content = ['mpirun -np 64 FieldConvert -m interppoints:plane=' scope ':fromxml=Mesh&.xml,LaplaceSet.xml:fromfld=Mesh&.fld PhiVortex&.plt -f >> log.txt'];
     file    = fopen([casePath par 'DatGeo' par 'LaplaceSolve.sh'],'a+');
     fprintf(file,strrep(content,'&',bashname));
     fprintf(file,'\n');
